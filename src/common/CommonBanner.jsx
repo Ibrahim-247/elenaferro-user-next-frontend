@@ -8,7 +8,7 @@ export default function CommonBanner({ subtitle, title, banner_img }) {
       className="h-175 w-full bg-cover bg-center"
     >
       <Container>
-        <div className="text-white flex flex-col items-center justify-center h-175 space-y-5">
+        <div className="text-white flex flex-col-reverse items-center justify-center h-175 gap-6">
           <h1 className="text-8xl font-semibold font-cormorant uppercase">
             {title ?? "MEDLOCK REALTY"}
           </h1>
