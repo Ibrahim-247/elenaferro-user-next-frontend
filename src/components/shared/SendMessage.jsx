@@ -16,7 +16,7 @@ export default function SendMessage() {
           </div>
 
           <div className="my-7 relative">
-            <div className="max-w-135 w-full h-187 overflow-hidden">
+            <div className="max-w-135 w-full h-180 overflow-hidden">
               <Image
                 src={Img}
                 alt="Img"
