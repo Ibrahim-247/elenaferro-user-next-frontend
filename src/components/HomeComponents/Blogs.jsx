@@ -2,6 +2,7 @@ import BlogCard from "@/common/BlogCard";
 import Container from "@/common/Container";
 import React from "react";
 import { Button } from "../ui/button";
+import { MoveRight } from "lucide-react";
 
 export default function Blogs() {
   return (
@@ -17,8 +18,8 @@ export default function Blogs() {
           ))}
         </div>
         <div className="flex items-center justify-center">
-          <Button className="bg-transparent text-secondary border border-secondary rounded-none text-lg h-12 hover:text-white">
-            VIEW ALL POSTS
+          <Button className="bg-transparent text-secondary border border-secondary rounded-none text-base h-12 hover:text-white px-5!">
+            VIEW ALL POSTS <MoveRight className="size-6" />
           </Button>
         </div>
       </Container>
