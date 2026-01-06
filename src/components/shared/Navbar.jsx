@@ -1,14 +1,19 @@
 "use client";
 import Container from "@/common/Container";
 import logo from "../../assets/footer_logo.png";
+import logo2 from "../../assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCallSharp } from "react-icons/io5";
 import { FaUserAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const isColorBlack = pathname.includes("search");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,14 +37,29 @@ export default function Navbar() {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${scrolled ? "bg-black/90 shadow-lg backdrop-blur" : "bg-transparent"}
+        ${
+          scrolled
+            ? isColorBlack
+              ? "shadow-lg bg-white"
+              : "bg-black/90 shadow-lg backdrop-blur"
+            : "bg-transparent"
+        }
       `}
     >
       <Container>
         <div className="flex items-center justify-between py-4">
-          <Image src={logo} alt="logo" className="w-64" priority />
+          <Image
+            src={isColorBlack ? logo2 : logo}
+            alt="logo"
+            className="w-64"
+            priority
+          />
 
-          <div className="hidden md:flex items-center gap-11 text-lg font-normal text-white">
+          <div
+            className={`hidden md:flex items-center gap-11 text-lg font-normal ${
+              isColorBlack ? "text-primary" : "text-white"
+            }`}
+          >
             {menuList.map((item, index) => (
               <Link
                 href={item.path}
