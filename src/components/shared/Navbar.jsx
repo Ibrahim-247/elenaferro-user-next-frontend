@@ -52,7 +52,7 @@ export default function Navbar() {
       submenu: [
         { name: "Home Sellers", path: "/sellers" },
         { name: "Home Valuation", path: "/sellers/home_valuation" },
-        { name: "Medlock Makeover", path: "/sellers/plans" },
+        { name: "Medlock Makeover", path: "/sellers/medlock_makeover" },
       ],
     },
     { name: "AGENT PLANS", path: "/plans" },
@@ -84,8 +84,8 @@ export default function Navbar() {
             }`}
           >
             {menuList.map((item, index) => {
+              const active = pathname === item?.path;
               if (item.submenu) {
-                // Dropdown menu for BUYERS and SELLERS
                 return (
                   <DropdownMenu key={index}>
                     <DropdownMenuTrigger asChild>
@@ -115,7 +115,9 @@ export default function Navbar() {
                   <Link
                     href={item.path}
                     key={index}
-                    className="hover:underline transition"
+                    className={`hover:underline transition ${
+                      active && "underline"
+                    }`}
                   >
                     {item.name}
                   </Link>
