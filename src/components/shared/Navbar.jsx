@@ -21,7 +21,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isColorBlack =
-    pathname.includes("search") || pathname.includes("mortgage_calculator");
+    pathname.includes("search") ||
+    pathname.includes("mortgage_calculator") ||
+    pathname.includes("home_valuation");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +51,7 @@ export default function Navbar() {
       name: "SELLERS",
       submenu: [
         { name: "Home Sellers", path: "/sellers" },
-        { name: "Home Valuation", path: "/sellers/plans" },
+        { name: "Home Valuation", path: "/sellers/home_valuation" },
         { name: "Medlock Makeover", path: "/sellers/plans" },
       ],
     },
