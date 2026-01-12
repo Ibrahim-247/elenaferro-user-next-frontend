@@ -13,12 +13,19 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
+import { Button } from "../ui/button";
+import { useSelector } from "react-redux";
+import { useLogout } from "@/hooks/auth.api";
+import { Spinner } from "../ui/spinner";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const user = useSelector((state) => state.auth.token);
 
   const isColorBlack =
     pathname.includes("search") ||
@@ -58,6 +65,9 @@ export default function Navbar() {
     { name: "AGENT PLANS", path: "/plans" },
     { name: "CONTACT", path: "/contact" },
   ];
+
+  // log out
+  const logoutMutation = useLogout();
 
   return (
     <div
@@ -128,7 +138,30 @@ export default function Navbar() {
 
           <div className="flex items-center gap-6 text-white text-2xl">
             <IoCallSharp className="cursor-pointer hover:text-secondary" />
-            <FaUserAlt className="cursor-pointer hover:text-secondary" />
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <FaUserAlt className="cursor-pointer hover:text-secondary" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <Button
+                    disabled={logoutMutation?.isPending}
+                    onClick={() => logoutMutation?.mutate()}
+                    className="w-full"
+                  >
+                    Log out{" "}
+                    {logoutMutation?.isPending ? <Spinner /> : <LogOut />}
+                  </Button>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link href="/auth/login">
+                <Button>Login</Button>
+              </Link>
+            )}
           </div>
         </div>
       </Container>
