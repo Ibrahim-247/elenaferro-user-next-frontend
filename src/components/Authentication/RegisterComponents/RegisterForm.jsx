@@ -11,6 +11,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "@/lib/validators/loginSchema";
 import { registerSchema } from "@/lib/validators/registerSchema";
+import { useRegister } from "@/hooks/auth.api";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,19 +22,23 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
     setValue,
     watch,
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      remember: false,
+      privacy_policy: false,
     },
   });
 
+  const registerMutation = useRegister();
+
   const onSubmit = (data) => {
-    console.log("Login Data:", data);
+    registerMutation.mutate(data);
+    console.log("Register Data:", data);
   };
+
   return (
     <div className="flex flex-col items-center justify-center my-10">
       <h4 className="text-4xl font-semibold mb-8">Create Your Account</h4>
@@ -44,10 +50,10 @@ export default function RegisterForm() {
             type="text"
             placeholder="Enter Your Full Name"
             className="bg-[#F5F6F7] py-6"
-            {...register("name")}
+            {...register("full_name")}
           />
-          {errors.name && (
-            <p className="text-sm text-red-500">{errors.name.message}</p>
+          {errors.full_name && (
+            <p className="text-sm text-red-500">{errors.full_name.message}</p>
           )}
         </div>
         {/* Email */}
@@ -102,7 +108,7 @@ export default function RegisterForm() {
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Enter your password"
               className="bg-[#F5F6F7] py-6 pr-12"
-              {...register("confirm_password")}
+              {...register("password_confirmation")}
             />
             <button
               type="button"
@@ -117,9 +123,9 @@ export default function RegisterForm() {
             </button>
           </div>
 
-          {errors.confirm_password && (
+          {errors.password_confirmation && (
             <p className="text-sm text-red-500">
-              {errors.confirm_password.message}
+              {errors.password_confirmation.message}
             </p>
           )}
         </div>
@@ -127,21 +133,37 @@ export default function RegisterForm() {
         {/* Remember me */}
         <label className="flex items-center gap-2 cursor-pointer">
           <Checkbox
-            checked={watch("remember")}
-            onCheckedChange={(val) => setValue("remember", Boolean(val))}
-            className="data-[state=checked]:bg-secondary data-[state=checked]:border-transparent"
+            checked={watch("privacy_policy")}
+            onCheckedChange={(val) =>
+              setValue("privacy_policy", Boolean(val), {
+                shouldValidate: true,
+              })
+            }
           />
-          <span>I agree to the Terms of Service and Privacy Policy</span>
+          <span>
+            I agree to the <strong>Terms of Service</strong> and{" "}
+            <strong>Privacy Policy</strong>
+          </span>
         </label>
+
+        {errors.privacy_policy && (
+          <p className="text-sm text-red-500">
+            {errors.privacy_policy.message}
+          </p>
+        )}
 
         {/* Submit */}
         <Button
           type="submit"
-          disabled={isSubmitting}
+          disabled={registerMutation?.isPending}
           className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-base h-11 flex gap-2"
         >
           Create Account
-          <ArrowRight className="size-5" />
+          {registerMutation?.isPending ? (
+            <Spinner />
+          ) : (
+            <ArrowRight className="size-5" />
+          )}
         </Button>
 
         {/* Signup */}

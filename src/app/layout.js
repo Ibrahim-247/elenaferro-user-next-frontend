@@ -1,7 +1,8 @@
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import { Toaster } from "sonner";
+import ReduxProvider from "@/provider/ReduxProvider";
+import QueryProvider from "@/provider/QueryProvider";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -22,9 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${inter.variable} antialiased`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <Toaster />
+        <ReduxProvider>
+          <QueryProvider>{children}</QueryProvider>{" "}
+        </ReduxProvider>
       </body>
     </html>
   );
