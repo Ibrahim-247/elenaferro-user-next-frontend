@@ -8,8 +8,14 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useSearchParams } from "next/navigation";
+import { useVerifyEmail } from "@/hooks/auth.api";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function EmailVerifyForm() {
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
+
   const {
     control,
     handleSubmit,
@@ -20,16 +26,23 @@ export default function EmailVerifyForm() {
     },
   });
 
+  // email verify form
+  const verifyMutation = useVerifyEmail();
+
   const onSubmit = (data) => {
-    console.log("OTP:", data.otp);
+    verifyMutation?.mutate({
+      otp: data?.otp,
+      action: "email_verification",
+      email: email,
+    });
   };
 
   return (
     <div className="flex flex-col items-center justify-center my-10 text-center">
       <h4 className="text-4xl font-semibold mb-8">Verify Code</h4>
       <div className="text-lg font-normal max-w-150 mb-6">
-        Enter the verification code we send you on:{" "}
-        <span>elenaferro******@gmail.com</span>
+        Enter the verification code we send you on:
+        <span>{email}</span>
       </div>
 
       <form
@@ -76,9 +89,15 @@ export default function EmailVerifyForm() {
         {/* Submit */}
         <Button
           type="submit"
+          disabled={verifyMutation?.isPending}
           className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-base h-11 flex gap-2"
         >
-          Verify <ArrowRight className="size-5" />
+          Verify{" "}
+          {verifyMutation?.isPending ? (
+            <Spinner />
+          ) : (
+            <ArrowRight className="size-5" />
+          )}
         </Button>
       </form>
 

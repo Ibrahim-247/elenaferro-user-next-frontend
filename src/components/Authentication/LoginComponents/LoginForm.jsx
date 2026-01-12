@@ -10,6 +10,8 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "@/lib/validators/loginSchema";
+import { useLogin } from "@/hooks/auth.api";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +20,7 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     setValue,
     watch,
   } = useForm({
@@ -28,8 +30,11 @@ export default function LoginForm() {
     },
   });
 
+  // login hooks
+  const loginMutation = useLogin();
+
   const onSubmit = (data) => {
-    console.log("Login Data:", data);
+    loginMutation?.mutate(data);
   };
   return (
     <div className="flex flex-col items-center justify-center my-10">
@@ -99,10 +104,15 @@ export default function LoginForm() {
         {/* Submit */}
         <Button
           type="submit"
-          disabled={isSubmitting}
+          disabled={loginMutation?.isPending}
           className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-base h-11 flex gap-2"
         >
-          Log in <ArrowRight className="size-5" />
+          Log in
+          {loginMutation?.isPending ? (
+            <Spinner />
+          ) : (
+            <ArrowRight className="size-5" />
+          )}
         </Button>
 
         {/* Signup */}
