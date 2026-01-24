@@ -4,11 +4,11 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
-import ContactForm from "../ContactComponents/ContactForm";
+import ContactForm from "./ContactForm";
 
-export default function SendMessage() {
+export default function ContactRequest() {
   return (
-    <div className="py-20 bg-[#F8F7F4]">
+    <div className="py-20 mt-26">
       <Container>
         <div>
           <div className="space-y-3 text-center">

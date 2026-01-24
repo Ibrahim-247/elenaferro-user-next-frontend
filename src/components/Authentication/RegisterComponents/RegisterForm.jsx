@@ -36,7 +36,6 @@ export default function RegisterForm() {
 
   const onSubmit = (data) => {
     registerMutation.mutate(data);
-    console.log("Register Data:", data);
   };
 
   return (

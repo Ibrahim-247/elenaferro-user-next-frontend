@@ -30,7 +30,8 @@ export default function Navbar() {
   const isColorBlack =
     pathname.includes("search") ||
     pathname.includes("mortgage_calculator") ||
-    pathname.includes("home_valuation");
+    pathname.includes("home_valuation") ||
+    pathname.includes("contact");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +63,10 @@ export default function Navbar() {
         { name: "Medlock Makeover", path: "/sellers/medlock_makeover" },
       ],
     },
-    { name: "AGENT PLANS", path: "/plans" },
+    {
+      name: "AGENT PLANS",
+      path: "https://elenaferro-agent.vercel.app/pricing",
+    },
     { name: "CONTACT", path: "/contact" },
   ];
 
@@ -121,7 +125,17 @@ export default function Navbar() {
                   </DropdownMenu>
                 );
               } else {
-                return (
+                return item?.name === "SEARCH" ? (
+                  <a
+                    href={item.path}
+                    key={index}
+                    className={`hover:underline transition ${
+                      active && "underline"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
                   <Link
                     href={item.path}
                     key={index}
@@ -136,12 +150,16 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="flex items-center gap-6 text-white text-2xl">
+          <div
+            className={`flex items-center gap-6 ${isColorBlack ? "text-black" : "text-white"} text-2xl`}
+          >
             <IoCallSharp className="cursor-pointer hover:text-secondary" />
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <FaUserAlt className="cursor-pointer hover:text-secondary" />
+                  <FaUserAlt
+                    className={`cursor-pointer hover:text-secondary ${isColorBlack ? "text-black" : "text-white"}`}
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>

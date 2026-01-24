@@ -3,6 +3,8 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import ReduxProvider from "@/provider/ReduxProvider";
 import QueryProvider from "@/provider/QueryProvider";
+import Web4RealtyIDX from "@/components/Web4RealtyIDX";
+import Script from "next/script";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
