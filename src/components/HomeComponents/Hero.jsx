@@ -2,6 +2,7 @@ import Container from "@/common/Container";
 import heroBg from "../../assets/hero_bg.png";
 import { Button } from "../ui/button";
 import { GoArrowRight } from "react-icons/go";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -16,15 +17,20 @@ export default function Hero() {
           </h1>
           <p className="text-4xl font-light uppercase">THE BETTER BROKERAGE</p>
           <div className="flex items-center gap-7 mt-5">
-            <Button className="bg-secondary text-white hover:bg-secondary/90 text-lg font-light h-11 rounded-none px-7!">
-              SEARCH HOMES <GoArrowRight className="size-6" />
-            </Button>
-            <Button
-              variant="outline"
-              className="text-white! hover:bg-secondary bg-transparent text-lg font-light h-11 rounded-none px-7!"
-            >
-              GET IN TOUCH <GoArrowRight className="size-6" />
-            </Button>
+            <Link href="/search">
+              <Button className="bg-secondary text-white hover:bg-secondary/90 text-lg font-light h-11 rounded-none px-7!">
+                SEARCH HOMES <GoArrowRight className="size-6" />
+              </Button>
+            </Link>
+
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className="text-white! hover:bg-secondary bg-transparent text-lg font-light h-11 rounded-none px-7!"
+              >
+                GET IN TOUCH <GoArrowRight className="size-6" />
+              </Button>
+            </Link>
           </div>
         </div>
       </Container>

@@ -21,7 +21,7 @@ export const useLogin = () => {
           user: data?.data?.user,
           token: data?.data?.token?.original?.access_token,
           remember,
-        })
+        }),
       );
       router.push("/");
     },
@@ -32,7 +32,7 @@ export const useLogin = () => {
         toast.error(
           error?.response?.data?.message ||
             error?.message ||
-            "Something went wrong!"
+            "Something went wrong!",
         );
       }
       console.error("Login error:", error);
@@ -74,7 +74,7 @@ export const useRegister = () => {
     onSuccess: (data, variable) => {
       router.push(`/auth/verify_email?email=${variable.email}`);
       toast.success(
-        `Registration successful. Verify your account using OTP sent to your email ${data?.message?.otp}`
+        `Registration successful. Verify your account using OTP sent to your email ${data?.message?.otp}`,
       );
     },
     onError: (error) => {
@@ -84,7 +84,7 @@ export const useRegister = () => {
         toast.error(
           error?.response?.data?.message ||
             error?.message ||
-            "Something went wrong!"
+            "Something went wrong!",
         );
       }
 
@@ -106,11 +106,10 @@ export const useVerifyEmail = () => {
         setAuth({
           user: data?.data?.user,
           token: data?.data?.token?.original?.access_token,
-        })
+        }),
       );
       router.push("/");
       toast.success(`Email verified successfully`);
-      console.log(data);
     },
     onError: (error) => {
       if (error?.code === "ERR_NETWORK") {
@@ -119,7 +118,7 @@ export const useVerifyEmail = () => {
         toast.error(
           error?.response?.data?.message ||
             error?.message ||
-            "Something went wrong!"
+            "Something went wrong!",
         );
       }
 
@@ -135,7 +134,6 @@ export const useResendOtp = () => {
     endpoint: "/resend-otp",
     onSuccess: (data) => {
       toast.success("Otp resend successfully");
-      console.log(data);
     },
     onError: (error) => {
       if (error?.code === "ERR_NETWORK") {
@@ -144,7 +142,7 @@ export const useResendOtp = () => {
         toast.error(
           error?.response?.data?.message ||
             error?.message ||
-            "Something went wrong!"
+            "Something went wrong!",
         );
       }
 
