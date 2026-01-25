@@ -154,7 +154,7 @@ export default function Navbar() {
             className={`flex items-center gap-6 ${isColorBlack ? "text-black" : "text-white"} text-2xl`}
           >
             <IoCallSharp className="cursor-pointer hover:text-secondary" />
-            {user ? (
+            {/* {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <FaUserAlt
@@ -179,7 +179,7 @@ export default function Navbar() {
               <Link href="/auth/login">
                 <Button>Login</Button>
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       </Container>
