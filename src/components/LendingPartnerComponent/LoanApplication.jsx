@@ -8,8 +8,8 @@ export default function LoanApplication() {
   return (
     <div className="py-20">
       <Container>
-        <div className="flex  items-center gap-14">
-          <div className="max-w-137 w-full h-225 overflow-hidden shrink-0">
+        <div className="flex flex-col lg:flex-row items-center gap-14">
+          <div className="max-w-137 w-full h-80 lg:h-225 overflow-hidden shrink-0">
             <Image
               src={diana}
               alt="diana"
@@ -17,7 +17,7 @@ export default function LoanApplication() {
             />
           </div>
           <div className="space-y-6">
-            <h4 className="text-6xl font-semibold font-cormorant">
+            <h4 className="text-4xl lg:text-6xl font-semibold font-cormorant">
               DIANA ROYBAL-LAMMERS
             </h4>
             <p className="text-xl font-normal text-[#404A60]">

@@ -10,9 +10,11 @@ export default function AboutUs() {
       <Container>
         <div className="text-center space-y-2">
           <p className="text-xl font-bold text-secondary">LEARN MORE</p>
-          <h3 className="text-6xl font-semibold font-cormorant">ABOUT US</h3>
+          <h3 className="text-4xl lg:text-6xl font-semibold font-cormorant">
+            ABOUT US
+          </h3>
         </div>
-        <div className="space-y-8 my-8">
+        <div className="space-y-8 my-5 lg:my-8">
           <p>
             Medlock Realty is a boutique real estate brokerage made up of the
             most dedicated real estate experts. At Medlock Realty, we have
