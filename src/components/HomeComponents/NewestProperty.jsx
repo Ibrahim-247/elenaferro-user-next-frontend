@@ -8,11 +8,11 @@ export default function NewestProperty() {
       <Container>
         <div className="space-y-3 text-center">
           <h4 className="text-xl font-semibold text-secondary">JUST LISTED</h4>
-          <p className="text-6xl font-semibold font-cormorant">
+          <p className="text-4xl lg:text-6xl font-semibold font-cormorant">
             NEWEST PROPERTIES
           </p>
         </div>
-        <div className="grid-cols-3 grid gap-9 my-14">
+        <div className="lg:grid-cols-3 grid gap-9 my-10 lg:my-14">
           {[...Array(3)].map((_, index) => (
             <PropertyCard key={index} />
           ))}

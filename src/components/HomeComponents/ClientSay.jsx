@@ -10,6 +10,58 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
+const reviewsData = [
+  {
+    id: 1,
+    review:
+      "Medlock Realty gives me the flexibility I was looking for without the excessive fees. Everything is straightforward, and I always know what I’m paying. It’s been a refreshing change from my previous brokerage.",
+    author: "Licensed Georgia Real Estate Agent",
+    location: "Georgia",
+  },
+  {
+    id: 2,
+    review:
+      "The onboarding process was smooth and efficient. I appreciated how clear the expectations were from day one. It feels professional without being overly rigid.",
+    author: "Atlanta Metro Area Agent",
+    location: "Atlanta Metro Area",
+  },
+  {
+    id: 3,
+    review:
+      "I like that I can focus on my clients instead of worrying about unnecessary brokerage costs. The systems are clean, modern, and easy to use.",
+    author: "Independent Agent",
+    location: "North Fulton",
+  },
+  {
+    id: 4,
+    review:
+      "This model makes sense for how I actually work. No pressure, no confusing splits, just a clear structure and solid broker support when I need it.",
+    author: "Georgia Salesperson",
+    location: "Georgia",
+  },
+  {
+    id: 5,
+    review:
+      "Medlock Realty strikes a great balance between independence and oversight. I never feel micromanaged, but I also don’t feel like I’m on my own.",
+    author: "Residential Real Estate Agent",
+    location: "Georgia",
+  },
+  {
+    id: 6,
+    review:
+      "What stood out to me was the transparency. No hidden fees, no surprises, and no complicated commission structures. I knew exactly what I was signing up for, which is rare in this industry.",
+    author: "Georgia Licensed Agent",
+    location: "Georgia",
+  },
+  {
+    id: 7,
+    review:
+      "As someone who didn’t need constant hand-holding but still wanted reliable broker support, this setup works extremely well. The onboarding tools and compliance process are clear and efficient.",
+    author: "Metro Atlanta Agent",
+    location: "Metro Atlanta",
+  },
+];
+
 export default function ClientSay() {
   const [api, setApi] = useState(null);
   const [current, setCurrent] = useState(0);
@@ -30,21 +82,21 @@ export default function ClientSay() {
       <Container>
         <div className="space-y-3 text-center">
           <p className="text-xl font-normal text-secondary">WHAT OUR</p>
-          <h4 className="text-6xl font-semibold font-cormorant">CLIENTS SAY</h4>
+          <h4 className="text-4xl lg:text-6xl font-semibold font-cormorant">
+            CLIENTS SAY
+          </h4>
         </div>
         <div className="mt-14">
           <Carousel setApi={setApi}>
             <CarouselContent>
-              {[...Array(4)].map((_, index) => (
+              {reviewsData?.map((item, index) => (
                 <CarouselItem key={index}>
-                  <div className="border-[#C4BCA9] p-11 text-center text-xl font-normal border-2 gap-y-8 flex flex-col items-center">
-                    <Image src={quots} alt="quots" className="w-20" />
-                    Elena and Aryan were absolutely wonderful to work with. They
-                    listened to all our hopes and concern and knew exactly how
-                    to help us find what we needed!
+                  <div className="border-[#C4BCA9] p-8 lg:p-11 text-center text-lg lg:text-xl font-normal border-2 gap-y-4 lg:gap-y-8 flex flex-col items-center">
+                    <Image src={quots} alt="quots" className="w-10 lg:w-20" />
+                    {item?.review}
                     <div className="w-24 bg-secondary h-0.5"></div>
                     <p className="text-2xl font-semibold font-cormorant">
-                      Sandy Williams
+                      {item?.location}
                     </p>
                   </div>
                 </CarouselItem>

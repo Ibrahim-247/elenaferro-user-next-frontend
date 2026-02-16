@@ -22,7 +22,7 @@ export default function MortgageForm() {
 
   const downPayment = useMemo(
     () => (homePrice * downPaymentPercent) / 100,
-    [homePrice, downPaymentPercent]
+    [homePrice, downPaymentPercent],
   );
 
   const loanAmount = homePrice - downPayment;
@@ -57,7 +57,7 @@ export default function MortgageForm() {
           </div>
 
           {/* Form */}
-          <div className="p-6 space-y-5">
+          <div className="md:p-6 space-y-5">
             {/* Home Price */}
             <div className="space-y-1">
               <label className="text-sm font-medium">Home Price</label>

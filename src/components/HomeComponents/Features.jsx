@@ -7,11 +7,11 @@ export default function Features() {
       <Container>
         <div className="space-y-3 text-center">
           <p className="text-xl font-normal text-secondary">EXPLORE</p>
-          <h4 className="text-6xl font-semibold font-cormorant">
+          <h4 className="text-4xl lg:text-6xl font-semibold font-cormorant">
             FEATURED AREAS
           </h4>
         </div>
-        <div className="grid grid-cols-2 gap-4 mt-16">
+        <div className="grid sm:grid-cols-2 gap-4 mt-16">
           {[...Array(4)].map((_, index) => (
             <div key={index} className="w-full h-75 overflow-hidden relative">
               <Image
