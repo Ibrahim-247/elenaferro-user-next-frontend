@@ -29,7 +29,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid grid-cols-2 gap-4 mt-8">
+      <div className="grid sm:grid-cols-2 gap-4 mt-8">
         {/* First Name */}
         <div>
           <Input

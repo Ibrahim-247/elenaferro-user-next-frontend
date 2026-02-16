@@ -50,10 +50,10 @@ export default function Footer() {
     <div className="bg-primary text-white py-20">
       <Container>
         <Image src={logo} alt="logo" className="w-60" />
-        <div className="my-10 flex justify-between text-base">
+        <div className="my-10 flex flex-wrap space-y-5 justify-between text-base">
           {/* connect */}
           <div>
-            <h5 className="text-3xl font-semibold font-cormorant mb-5">
+            <h5 className="text-2xl lg:text-3xl font-semibold font-cormorant mb-5">
               LET’S CONNECT
             </h5>
             <div className="font-normal space-y-3">
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
           {/* NAVIGATION */}
           <div>
-            <h5 className="text-3xl font-semibold font-cormorant mb-5">
+            <h5 className="text-2xl lg:text-3xl font-semibold font-cormorant mb-5">
               NAVIGATION
             </h5>
             <div className="tfont-normal space-y-3">
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
           {/* Resources */}
           <div>
-            <h5 className="text-3xl font-semibold font-cormorant mb-5 uppercase">
+            <h5 className="text-2xl lg:text-3xl font-semibold font-cormorant mb-5 uppercase">
               Resources
             </h5>
             <div className="font-normal space-y-3">
@@ -102,9 +102,9 @@ export default function Footer() {
           identify prospective properties consumers may be interested in
           purchasing.
         </p>
-        <div className="mt-10 text-base font-normal flex items-center justify-between">
+        <div className="mt-10 text-base font-normal flex-wrap space-y-2.5 sm:space-y-0 flex items-center justify-between">
           <p>© 2025 Medlock Realty. All rights reserved.</p>
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-5 lg:gap-12 flex-wrap">
             <p>Terms of service</p>
             <p>Privacy policy</p>
             <p>Compliance Notice</p>

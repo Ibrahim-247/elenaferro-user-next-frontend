@@ -13,18 +13,20 @@ export default function SendMessage() {
         <div>
           <div className="space-y-3 text-center">
             <p className="text-xl font-normal text-secondary">SEND A</p>
-            <h4 className="text-6xl font-semibold font-cormorant">MESSAGE</h4>
+            <h4 className="text-4xl lg:text-6xl font-semibold font-cormorant">
+              MESSAGE
+            </h4>
           </div>
 
           <div className="my-7 relative">
-            <div className="max-w-135 w-full h-180 overflow-hidden">
+            <div className="max-w-135 w-full h-40 lg:h-180 overflow-hidden">
               <Image
                 src={Img}
                 alt="Img"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="max-w-207 w-full bg-white absolute top-10 right-0 shadow-xl p-12">
+            <div className="max-w-207 w-full bg-white sm:absolute top-10 right-0 shadow-xl p-5 lg:p-12">
               <div>
                 <h4 className="text-3xl font-bold text-secondary font-cormorant">
                   YOUR GEORGIA BROKERAGE
