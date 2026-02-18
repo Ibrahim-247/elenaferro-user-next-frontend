@@ -47,10 +47,10 @@ export default function Footer() {
   };
 
   return (
-    <div className="bg-primary text-white py-20">
+    <div className="bg-primary text-white py-12 lg:py-20">
       <Container>
         <Image src={logo} alt="logo" className="w-60" />
-        <div className="my-10 flex flex-wrap space-y-5 justify-between text-base">
+        <div className="my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-base">
           {/* connect */}
           <div>
             <h5 className="text-2xl lg:text-3xl font-semibold font-cormorant mb-5">

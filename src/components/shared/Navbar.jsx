@@ -217,15 +217,19 @@ export default function Navbar() {
                 </div>
               );
             }
-            return item?.name === "search" ? (
-              <a
-                key={index}
-                href={item.path}
-                className="text-lg font-semibold text-primary hover:text-secondary py-2 border-b border-gray-100"
-              >
-                {item.name}
-              </a>
-            ) : (
+            const isSearch = item?.name?.toLowerCase() === "search";
+            if (isSearch) {
+              return (
+                <a
+                  key={index}
+                  href={item.path}
+                  className="text-lg font-semibold text-primary hover:text-secondary py-2 border-b border-gray-100"
+                >
+                  {item.name}
+                </a>
+              );
+            }
+            return (
               <Link
                 key={index}
                 href={item.path}

@@ -8,7 +8,7 @@ export default function Achievement({ data }) {
     { name: "Years in Real Estate", value: data?.years_in_real_estate || 0 },
   ];
   return (
-    <div className="py-20">
+    <div className="py-12 lg:py-20">
       <Container>
         <div className="space-y-3 text-center">
           <p className="text-xl font-normal text-secondary">
@@ -18,11 +18,11 @@ export default function Achievement({ data }) {
             {data?.title}
           </h4>
         </div>
-        <div className="grid grid-cols-3 mt-10 lg:mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 mt-10 lg:mt-20">
           {achivements?.map((item, index) => (
             <div
               key={index}
-              className="space-y-1.5 text-center border-r-2 last:border-r-0"
+              className="space-y-1.5 text-center border-b-2 md:border-b-0 md:border-r-2 last:border-r-0 last:border-b-0 pb-10 md:pb-0"
             >
               <h5 className="text-4xl lg:text-7xl font-bold text-secondary">
                 {item?.value}

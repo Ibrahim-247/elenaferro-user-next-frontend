@@ -8,7 +8,7 @@ import ContactForm from "../ContactComponents/ContactForm";
 
 export default function SendMessage() {
   return (
-    <div className="py-20 bg-[#F8F7F4]">
+    <div className="py-12 lg:py-20 bg-[#F8F7F4]">
       <Container>
         <div>
           <div className="space-y-3 text-center">
@@ -19,7 +19,7 @@ export default function SendMessage() {
           </div>
 
           <div className="my-7 relative">
-            <div className="max-w-135 w-full h-40 lg:h-180 overflow-hidden">
+            <div className="max-w-135 w-full h-64 lg:h-180 overflow-hidden">
               <Image
                 src={Img}
                 alt="Img"
