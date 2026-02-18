@@ -6,7 +6,7 @@ import { LuMailOpen } from "react-icons/lu";
 
 export default function AboutUs() {
   return (
-    <div className="py-20">
+    <div className="py-12 lg:py-20">
       <Container>
         <div className="text-center space-y-2">
           <p className="text-xl font-bold text-secondary">LEARN MORE</p>

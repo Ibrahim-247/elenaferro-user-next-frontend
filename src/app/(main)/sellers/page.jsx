@@ -3,13 +3,21 @@ import SellerHeader from "@/components/SellerComponent/SellerHeader";
 import SellingGuideForm from "@/components/SellerComponent/SellingGuideForm";
 import SellingProcess from "@/components/SellerComponent/SellingProcess";
 import SendMessage from "@/components/shared/SendMessage";
+import { getHomeSellerBanner, getSellingProcess } from "@/hooks/cms.api";
 
-export default function page() {
+export default async function page() {
+  const bannerData = await getHomeSellerBanner();
+  const sellingProcess = await getSellingProcess();
+
   return (
     <div>
-      <CommonBanner title="HOME SELLERS" subtitle="RESOURCES FOR" />
+      <CommonBanner
+        title={bannerData?.data?.title}
+        subtitle={bannerData?.data?.sub_title}
+        banner_img={bannerData?.image}
+      />
       <SellerHeader />
-      <SellingProcess />
+      <SellingProcess data={sellingProcess?.data} />
       <SellingGuideForm />
       <SendMessage />
     </div>
