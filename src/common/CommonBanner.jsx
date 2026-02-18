@@ -4,7 +4,7 @@ import heroBg from "../assets/hero_bg.png";
 export default function CommonBanner({ subtitle, title, banner_img }) {
   return (
     <div
-      style={{ backgroundImage: `url(${banner_img?.src || heroBg?.src})` }}
+      style={{ backgroundImage: `url(${banner_img || heroBg?.src})` }}
       className="h-[50vh] md:h-175 w-full bg-cover bg-center"
     >
       <Container>

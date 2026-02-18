@@ -155,7 +155,9 @@ export default function Navbar() {
                 isColorBlack ? "text-black" : "text-white"
               } text-xl md:text-2xl`}
             >
-              <IoCallSharp className="cursor-pointer hover:text-secondary hidden sm:block" />
+              <Link href="tel:4048601060">
+                <IoCallSharp className="cursor-pointer hover:text-secondary hidden sm:block" />
+              </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="lg:hidden p-1"
@@ -169,7 +171,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/50 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-60 bg-black/50 transition-opacity duration-300 lg:hidden ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -179,7 +181,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Content */}
       <div
-        className={`fixed top-0 right-0 z-[70] h-full w-[80%] max-w-sm bg-white p-6 shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 z-70 h-full w-[80%] max-w-sm bg-white p-6 shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

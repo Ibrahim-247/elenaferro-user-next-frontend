@@ -3,13 +3,22 @@ import BuyersHeader from "@/components/BuyersComponents/BuyersHeader";
 import BuyingProcess from "@/components/BuyersComponents/BuyingProcess";
 import HomeBuyingGuideForm from "@/components/BuyersComponents/HomeBuyingGuideForm";
 import SendMessage from "@/components/shared/SendMessage";
+import { getBuyerBannerData, getBuyerBuyingProcessData } from "@/hooks/cms.api";
 
-export default function page() {
+export default async function page() {
+  const bannerData = await getBuyerBannerData();
+  const buyingProcces = await getBuyerBuyingProcessData();
+  console.log(buyingProcces);
+
   return (
     <div>
-      <CommonBanner title={"HOME BUYERS"} subtitle={"RESOURCES FOR"} />
+      <CommonBanner
+        title={bannerData?.data?.title}
+        subtitle={bannerData?.data?.sub_title}
+        banner_img={bannerData?.data?.image}
+      />
       <BuyersHeader />
-      <BuyingProcess />
+      <BuyingProcess data={buyingProcces?.data} />
       <HomeBuyingGuideForm />
       <SendMessage />
     </div>
