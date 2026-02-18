@@ -3,13 +3,22 @@ import HomeBuyingGuideForm from "@/components/BuyersComponents/HomeBuyingGuideFo
 import ClientSay from "@/components/HomeComponents/ClientSay";
 import LendingHeader from "@/components/LendingPartnerComponent/LendingHeader";
 import LoanApplication from "@/components/LendingPartnerComponent/LoanApplication";
+import { getLendingBannerData, getPartnerAboutData } from "@/hooks/cms.api";
 
-export default function page() {
+export default async function page() {
+  const bannerData = await getLendingBannerData();
+  const aboutData = await getPartnerAboutData();
+  console.log(aboutData);
+
   return (
     <div>
-      <CommonBanner title={"LENDING PARTNERS"} subtitle={"RESOURCES"} />
+      <CommonBanner
+        title={bannerData?.data?.title}
+        subtitle={bannerData?.data?.sub_title}
+        banner_img={bannerData?.data?.image}
+      />
       <LendingHeader />
-      <LoanApplication />
+      <LoanApplication data={aboutData?.data} />
       <HomeBuyingGuideForm />
       <ClientSay />
     </div>

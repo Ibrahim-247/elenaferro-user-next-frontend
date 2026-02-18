@@ -6,7 +6,7 @@ import { MoveRight } from "lucide-react";
 
 export default function Blogs() {
   return (
-    <div className="py-20">
+    <div className="py-12 lg:py-20">
       <Container>
         <div className="space-y-3 text-center">
           <p className="text-xl font-normal text-secondary">READ OUR</p>
@@ -14,7 +14,7 @@ export default function Blogs() {
             BLOGS
           </h4>
         </div>
-        <div className="grid lg:grid-cols-3 gap-8 my-10 lg:my-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 lg:my-20">
           {[...Array(3)].map((_, index) => (
             <BlogCard key={index} />
           ))}

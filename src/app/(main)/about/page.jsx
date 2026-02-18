@@ -1,23 +1,33 @@
 import CommonBanner from "@/common/CommonBanner";
-import aboutBanner from "../../../assets/about_banner.png";
 import About from "@/components/AboutComponents/About";
 import Different from "@/components/AboutComponents/Different";
 import ClientSay from "@/components/HomeComponents/ClientSay";
 import Consultation from "@/components/AboutComponents/Consultation";
+import {
+  getAboutBannerData,
+  getAboutDifferentData,
+  getAboutMedlockData,
+  getAboutscheduleData,
+} from "@/hooks/cms.api";
 
-export default function page() {
+export default async function page() {
+  const bannerData = await getAboutBannerData();
+  const aboutMedlockData = await getAboutMedlockData();
+  const differentData = await getAboutDifferentData();
+  const scheduleData = await getAboutscheduleData();
+
   return (
     <div>
       <CommonBanner
-        banner_img={aboutBanner}
-        title={"ABOUT US"}
-        subtitle={"GET TO KNOW US"}
+        banner_img={bannerData?.data?.image}
+        title={bannerData?.data?.title}
+        subtitle={bannerData?.data?.sub_title}
       />
 
-      <About />
-      <Different />
+      <About data={aboutMedlockData?.data} />
+      <Different data={differentData?.data} />
       <ClientSay />
-      <Consultation />
+      <Consultation data={scheduleData?.data} />
     </div>
   );
 }

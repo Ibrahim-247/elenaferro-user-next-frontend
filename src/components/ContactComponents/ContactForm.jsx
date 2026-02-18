@@ -29,74 +29,83 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid sm:grid-cols-2 gap-4 mt-8">
-        {/* First Name */}
-        <div>
-          <Input
-            className={`rounded-none border-[#979CA8] h-11 ${
-              errors.first_name ? "border-red-500" : ""
-            }`}
-            placeholder="First Name"
-            {...register("first_name", { required: "First name is required" })}
-          />
-          {errors.first_name && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.first_name.message}
-            </p>
-          )}
-        </div>
+      <div className="space-y-4 mt-8">
+        <div className="grid sm:grid-cols-2 gap-4">
+          {/* First Name */}
+          <div>
+            <Input
+              className={`rounded-none border-[#979CA8] h-11 ${
+                errors.first_name ? "border-red-500" : ""
+              }`}
+              placeholder="First Name"
+              {...register("first_name", {
+                required: "First name is required",
+              })}
+            />
+            {errors.first_name && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.first_name.message}
+              </p>
+            )}
+          </div>
 
-        {/* Last Name */}
-        <div>
-          <Input
-            className={`rounded-none border-[#979CA8] h-11 ${
-              errors.last_name ? "border-red-500" : ""
-            }`}
-            placeholder="Last Name"
-            {...register("last_name", { required: "Last name is required" })}
-          />
-          {errors.last_name && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.last_name.message}
-            </p>
-          )}
+          {/* Last Name */}
+          <div>
+            <Input
+              className={`rounded-none border-[#979CA8] h-11 ${
+                errors.last_name ? "border-red-500" : ""
+              }`}
+              placeholder="Last Name"
+              {...register("last_name", { required: "Last name is required" })}
+            />
+            {errors.last_name && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.last_name.message}
+              </p>
+            )}
+          </div>
         </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {/* Email */}
+          <div>
+            <Input
+              type="email"
+              className={`rounded-none border-[#979CA8] h-11 ${
+                errors.email ? "border-red-500" : ""
+              }`}
+              placeholder="Email Address"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
-        {/* Email */}
-        <div>
-          <Input
-            type="email"
-            className={`rounded-none border-[#979CA8] h-11 ${
-              errors.email ? "border-red-500" : ""
-            }`}
-            placeholder="Email Address"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Invalid email address",
-              },
-            })}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <Input
-            className={`rounded-none border-[#979CA8] h-11 ${
-              errors.phone ? "border-red-500" : ""
-            }`}
-            placeholder="Phone Number"
-            {...register("phone", {
-              required: "Phone number is required",
-            })}
-          />
-          {errors.phone && (
-            <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
-          )}
+          {/* Phone */}
+          <div>
+            <Input
+              className={`rounded-none border-[#979CA8] h-11 ${
+                errors.phone ? "border-red-500" : ""
+              }`}
+              placeholder="Phone Number"
+              {...register("phone", {
+                required: "Phone number is required",
+              })}
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.phone.message}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Message */}

@@ -78,7 +78,7 @@ export default function ClientSay() {
     });
   }, [api]);
   return (
-    <div className="py-20 bg-[#F8F7F4]">
+    <div className="py-12 lg:py-20 bg-[#F8F7F4]">
       <Container>
         <div className="space-y-3 text-center">
           <p className="text-xl font-normal text-secondary">WHAT OUR</p>
