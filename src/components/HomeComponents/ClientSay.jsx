@@ -9,6 +9,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const reviewsData = [
   {
@@ -62,6 +63,25 @@ const reviewsData = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 export default function ClientSay() {
   const [api, setApi] = useState(null);
   const [current, setCurrent] = useState(0);
@@ -77,16 +97,30 @@ export default function ClientSay() {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
   return (
     <div className="py-12 lg:py-20 bg-[#F8F7F4]">
       <Container>
-        <div className="space-y-3 text-center">
-          <p className="text-xl font-normal text-secondary">WHAT OUR</p>
-          <h4 className="text-4xl lg:text-6xl font-semibold font-cormorant">
-            CLIENTS SAY
-          </h4>
-        </div>
-        <div className="mt-14">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+          className="space-y-3 text-center"
+        >
+          <motion.p variants={itemVariants} className="text-xl font-normal text-secondary">WHAT OUR</motion.p>
+          <motion.h4 variants={itemVariants} className="text-4xl lg:text-6xl font-semibold uppercase font-cormorant">
+            Agents SAY
+          </motion.h4>
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={itemVariants}
+          className="mt-14"
+        >
           <Carousel setApi={setApi}>
             <CarouselContent>
               {reviewsData?.map((item, index) => (
@@ -115,7 +149,7 @@ export default function ClientSay() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </Container>
     </div>
   );

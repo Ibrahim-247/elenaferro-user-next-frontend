@@ -1,5 +1,4 @@
 import Container from "@/common/Container";
-import React from "react";
 
 export default function PropertySearch() {
   return (

@@ -33,6 +33,15 @@ export async function getAchivementData() {
   });
 }
 
+// feature section
+export async function getFeatureData() {
+  return useServerApi({
+    mode: "ISR",
+    revalidate: 86400,
+    endpoint: "/cms/homepage/explore-section",
+  });
+}
+
 // ** About Page
 
 // banner section

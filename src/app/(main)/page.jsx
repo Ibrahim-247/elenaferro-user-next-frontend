@@ -6,11 +6,16 @@ import Features from "@/components/HomeComponents/Features";
 import Hero from "@/components/HomeComponents/Hero";
 import NewestProperty from "@/components/HomeComponents/NewestProperty";
 import SendMessage from "@/components/shared/SendMessage";
-import { getAchivementData, getHeroData } from "@/hooks/cms.api";
+import {
+  getAchivementData,
+  getFeatureData,
+  getHeroData,
+} from "@/hooks/cms.api";
 
 export default async function page() {
   const heroData = await getHeroData();
   const achivementData = await getAchivementData();
+  const featureData = await getFeatureData();
 
   return (
     <div>
@@ -18,7 +23,7 @@ export default async function page() {
       <AboutUs />
       <NewestProperty />
       <Achievement data={achivementData?.data} />
-      <Features />
+      <Features data={featureData?.data} />
       <ClientSay />
       <Blogs />
       <SendMessage />
