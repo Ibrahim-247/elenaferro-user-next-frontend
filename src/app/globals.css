@@ -91,4 +91,8 @@
   body {
     @apply font-inter text-primary;
   }
+
+    html {
+    scroll-behavior: smooth;
+  }
 }
