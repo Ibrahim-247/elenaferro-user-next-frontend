@@ -70,11 +70,8 @@ export default function Navbar() {
         { name: "Medlock Makeover", path: "/sellers/medlock_makeover" },
       ],
     },
-    // {
-    //   name: "AGENT PLANS",
-    //   path: "https://elenaferro-agent.vercel.app/pricing",
-    // },
     { name: "CONTACT", path: "/contact" },
+    { name: "Agents", path: "https://elenaferro-agent.vercel.app" },
   ];
 
   // log out
@@ -87,7 +84,7 @@ export default function Navbar() {
           scrolled
             ? isColorBlack
               ? "shadow-lg bg-white"
-              : "bg-black/90 shadow-lg backdrop-blur"
+              : "bg-[#4a4a4a] shadow-lg backdrop-blur"
             : "bg-transparent"
         }`}
       >
@@ -103,7 +100,7 @@ export default function Navbar() {
             </Link>
 
             <div
-              className={`hidden lg:flex items-center gap-6 xl:gap-11 text-base xl:text-lg font-normal ${
+              className={`hidden lg:flex items-center gap-6 xl:gap-11 text-base xl:text-lg uppercase font-normal ${
                 isColorBlack ? "text-primary" : "text-white"
               }`}
             >
@@ -118,7 +115,7 @@ export default function Navbar() {
                         </span>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
-                        className="bg-white text-black mt-2 rounded-lg shadow-lg border-none"
+                        className="bg-white text-black mt-2 border-none p-0 shadow-sm rounded-none"
                         side="bottom"
                         align="start"
                       >
@@ -126,7 +123,7 @@ export default function Navbar() {
                           <DropdownMenuItem
                             key={subIndex}
                             asChild
-                            className="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
+                            className="hover:bg-secondary! hover:text-white! rounded-none cursor-pointer uppercase border-b font-normal py-3 px-4"
                           >
                             <Link href={subItem.path}>{subItem.name}</Link>
                           </DropdownMenuItem>
@@ -135,7 +132,17 @@ export default function Navbar() {
                     </DropdownMenu>
                   );
                 } else {
-                  return (
+                  return item?.name === "SEARCH" ? (
+                    <a
+                      href={item.path}
+                      key={index}
+                      className={`hover:underline transition ${
+                        active && "underline font-semibold"
+                      }`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
                     <Link
                       href={item.path}
                       key={index}

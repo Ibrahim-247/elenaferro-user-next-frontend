@@ -4,7 +4,7 @@ import React from "react";
 export default function Achievement({ data }) {
   const achivements = [
     { name: "Total Sales", value: data?.total_sales || 0 },
-    { name: "TList to Sold Ratio", value: data?.list_of_sold_ratio || 0 },
+    { name: "List to Sold Ratio", value: data?.list_of_sold_ratio || 0 },
     { name: "Years in Real Estate", value: data?.years_in_real_estate || 0 },
   ];
   return (
