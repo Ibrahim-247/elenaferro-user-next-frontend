@@ -16,7 +16,6 @@ export default async function page() {
   const heroData = await getHeroData();
   const achivementData = await getAchivementData();
   const featureData = await getFeatureData();
-  console.log(featureData);
 
   return (
     <div>
