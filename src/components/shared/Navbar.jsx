@@ -23,7 +23,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const user = useSelector((state) => state.auth.token);
+  // const user = useSelector((state) => state.auth.token);
 
   const isColorBlack =
     pathname.includes("search") ||
