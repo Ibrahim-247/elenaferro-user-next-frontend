@@ -1,5 +1,4 @@
 "use client";
-
 import BlogCard from "@/common/BlogCard";
 import Container from "@/common/Container";
 import { motion } from "framer-motion";
@@ -26,7 +25,7 @@ export default function BlogWraper() {
   return (
     <div className="py-40">
       <Container>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -35,7 +34,7 @@ export default function BlogWraper() {
           Blogs
         </motion.h1>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
