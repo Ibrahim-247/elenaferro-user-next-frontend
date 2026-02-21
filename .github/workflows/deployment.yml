@@ -16,13 +16,25 @@ jobs:
       - name: Deploy to VPS using password
         uses: appleboy/ssh-action@v1
         with:
-          node-version: "24"
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
+          # node-version এখান থেকে সরিয়ে স্ক্রিপ্টের ভেতরে নিতে হবে
           script: |
+            # NVM লোড করা যাতে node কমান্ড কাজ করে
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Node.js ভার্সন ২০ বা তার বেশি সিলেক্ট করা (Next.js v16 এর জন্য লাগবে)
+            # যদি সার্ভারে ২০ ইন্সটল না থাকে, তবে 'nvm install 20' রান করুন একবার
+            nvm use 20 || nvm install 20
+
             cd ${{ secrets.VPS_PATH }}
             git pull origin main
+
+            # ক্লিন ইন্সটল এবং বিল্ড
             npm install
             npm run build
-            pm2 restart 2
+
+            # PM2 দিয়ে রিস্টার্ট
+            pm2 restart 2 --update-env
