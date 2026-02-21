@@ -16,6 +16,7 @@ jobs:
       - name: Deploy to VPS using password
         uses: appleboy/ssh-action@v1
         with:
+          node-version: "24"
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
