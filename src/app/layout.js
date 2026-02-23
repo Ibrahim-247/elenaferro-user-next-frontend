@@ -3,8 +3,6 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import ReduxProvider from "@/provider/ReduxProvider";
 import QueryProvider from "@/provider/QueryProvider";
-import Web4RealtyIDX from "@/components/Web4RealtyIDX";
-import Script from "next/script";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -17,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Medlockrealty User",
+  title: "Medlockrealty User Portal",
   description: "Explore User",
 };
 

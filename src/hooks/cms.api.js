@@ -24,6 +24,14 @@ export async function getHeroData() {
   });
 }
 
+// about section
+export async function getAboutData() {
+  return useServerApi({
+    mode: "SSR",
+    endpoint: "/cms/home_page/about_section",
+  });
+}
+
 // achivement section
 export async function getAchivementData() {
   return useServerApi({
