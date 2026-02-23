@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CommonBanner from "@/common/CommonBanner";
 import SellerHeader from "@/components/SellerComponent/SellerHeader";
 import SellingGuideForm from "@/components/SellerComponent/SellingGuideForm";
