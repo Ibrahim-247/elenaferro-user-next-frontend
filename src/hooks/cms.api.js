@@ -91,13 +91,13 @@ export async function getAboutscheduleData() {
 // ** Buyer Page
 
 // Buyer banner section
-// export async function getBuyerBannerData() {
-//   return useServerApi({
-//     mode: "ISR",
-//     revalidate: 86400,
-//     endpoint: "/cms/buyer-page/top-section",
-//   });
-// }
+export async function getBuyerBannerData() {
+  return useServerApi({
+    mode: "ISR",
+    revalidate: 86400,
+    endpoint: "/cms/buyer-page/top-section",
+  });
+}
 
 // Buying Process section
 export async function getBuyerBuyingProcessData() {

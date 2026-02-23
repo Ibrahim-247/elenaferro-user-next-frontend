@@ -3,7 +3,9 @@ export async function useServerApi({
   mode = "SSG",
   revalidate = 3600,
 }) {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api${endpoint}`;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://dashboard.medlockrealty.com";
+  const url = `${baseUrl}/api${endpoint}`;
 
   const fetchOptions =
     mode === "SSR"
