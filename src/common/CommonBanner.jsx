@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "@/common/Container";
 import heroBg from "../assets/hero_bg.png";
 import { motion } from "framer-motion";
