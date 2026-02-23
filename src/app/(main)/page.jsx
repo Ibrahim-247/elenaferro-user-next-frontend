@@ -7,6 +7,7 @@ import Hero from "@/components/HomeComponents/Hero";
 import NewestProperty from "@/components/HomeComponents/NewestProperty";
 import SendMessage from "@/components/shared/SendMessage";
 import {
+  getAboutData,
   getAchivementData,
   getFeatureData,
   getHeroData,
@@ -14,13 +15,14 @@ import {
 
 export default async function page() {
   const heroData = await getHeroData();
+  const aboutData = await getAboutData();
   const achivementData = await getAchivementData();
   const featureData = await getFeatureData();
 
   return (
     <div>
       <Hero data={heroData?.data} />
-      <AboutUs />
+      <AboutUs data={aboutData?.data} />
       <NewestProperty />
       <Achievement data={achivementData?.data} />
       <Features data={featureData?.data} />
