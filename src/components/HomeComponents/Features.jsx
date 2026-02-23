@@ -6,6 +6,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Features({ data }) {
+  console.log(data);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -56,7 +58,7 @@ export default function Features({ data }) {
           variants={containerVariants}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-16"
         >
-          {[...Array(4)].map((_, index) => (
+          {data?.featured_area?.map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -72,11 +74,13 @@ export default function Features({ data }) {
                 <Image
                   src={feature}
                   alt="feature"
+                  width={500}
+                  height={100}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
               <h5 className="text-xl font-normal uppercase absolute top-1/2 left-1/2 -translate-1/2 text-white pointer-events-none drop-shadow-lg">
-                JOHNS CREEK
+                {item?.title}
               </h5>
             </motion.div>
           ))}

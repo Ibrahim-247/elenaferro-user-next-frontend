@@ -29,11 +29,10 @@ export default function Hero({ data }) {
 
   return (
     <div
-      style={{ backgroundImage: `url(${data?.image || heroBg})` }}
+      style={{ backgroundImage: `url(${data?.image || heroBg?.src})` }}
       className="h-130 lg:h-175 w-full bg-cover bg-center"
     >
       <Container>
-        xxxx
         <motion.div
           variants={containerVariants}
           initial="hidden"
