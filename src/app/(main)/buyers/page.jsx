@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CommonBanner from "@/common/CommonBanner";
 import BuyersHeader from "@/components/BuyersComponents/BuyersHeader";
 import BuyingProcess from "@/components/BuyersComponents/BuyingProcess";
