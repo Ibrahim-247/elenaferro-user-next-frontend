@@ -33,6 +33,7 @@ export default function Hero({ data }) {
       className="h-130 lg:h-175 w-full bg-cover bg-center"
     >
       <Container>
+        xxx
         <motion.div
           variants={containerVariants}
           initial="hidden"
