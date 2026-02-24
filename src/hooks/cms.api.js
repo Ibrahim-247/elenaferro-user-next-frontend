@@ -20,14 +20,15 @@ export async function getHeroData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/homepage/top-section",
+    endpoint: "/cms/home_page/top_section",
   });
 }
 
 // about section
 export async function getAboutData() {
   return useServerApi({
-    mode: "SSR",
+    mode: "ISR",
+    revalidate: 86400,
     endpoint: "/cms/home_page/about_section",
   });
 }
@@ -37,7 +38,7 @@ export async function getAchivementData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/homepage/achivement-section",
+    endpoint: "/cms/home_page/achivement_section",
   });
 }
 
@@ -46,7 +47,7 @@ export async function getFeatureData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/homepage/explore-section",
+    endpoint: "/cms/home_page/explore_section",
   });
 }
 
@@ -57,7 +58,7 @@ export async function getAboutBannerData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/aboutpage/top-section",
+    endpoint: "/cms/about_page/top_section",
   });
 }
 
@@ -66,7 +67,7 @@ export async function getAboutMedlockData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/aboutpage/medilock-section",
+    endpoint: "/cms/about_page/medilock_section",
   });
 }
 
@@ -75,7 +76,7 @@ export async function getAboutDifferentData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/aboutpage/different-section",
+    endpoint: "/cms/about_page/different_section",
   });
 }
 
@@ -84,7 +85,7 @@ export async function getAboutscheduleData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/aboutpage/schdule-section",
+    endpoint: "/cms/about_page/schdule_section",
   });
 }
 
@@ -95,7 +96,7 @@ export async function getBuyerBannerData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/buyer-page/top-section",
+    endpoint: "/cms/buyer_page/top_section",
   });
 }
 
@@ -104,7 +105,7 @@ export async function getBuyerBuyingProcessData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/buyer-page/buying-journey-section",
+    endpoint: "/cms/buyer_page/buying_journey_section",
   });
 }
 
@@ -115,7 +116,7 @@ export async function getLendingBannerData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/landing-partner-page/top-section",
+    endpoint: "/cms/landing_partner_page/top_section",
   });
 }
 
@@ -124,7 +125,7 @@ export async function getPartnerAboutData() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/landing-partner-page/partner-about-section",
+    endpoint: "/cms/landing_partner_page/partner_about_section",
   });
 }
 
@@ -135,7 +136,7 @@ export async function getHomeSellerBanner() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/seller-page/top-section",
+    endpoint: "/cms/seller_page/top_section",
   });
 }
 
@@ -144,6 +145,6 @@ export async function getSellingProcess() {
   return useServerApi({
     mode: "ISR",
     revalidate: 86400,
-    endpoint: "/cms/seller-page/selling-process-section",
+    endpoint: "/cms/seller_page/selling_process_section",
   });
 }

@@ -14,9 +14,19 @@ export async function useServerApi({
         ? { cache: "force-cache", next: { revalidate } }
         : { cache: "force-cache" };
 
-  const res = await fetch(url, fetchOptions);
+  try {
+    const res = await fetch(url, fetchOptions);
 
-  if (!res.ok) throw new Error(`Failed to fetch ${endpoint}`);
+    if (!res.ok) {
+      console.error(
+        `[useServerApi] Error: ${res.status} ${res.statusText} at ${url}`
+      );
+      return null;
+    }
 
-  return res.json();
+    return res.json();
+  } catch (err) {
+    console.error(`[useServerApi] Network Error: ${err.message} at ${url}`);
+    return null;
+  }
 }
