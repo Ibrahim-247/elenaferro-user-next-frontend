@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import AboutUs from "@/components/HomeComponents/AboutUs";
 import Achievement from "@/components/HomeComponents/Achievement";
 import Blogs from "@/components/HomeComponents/Blogs";
