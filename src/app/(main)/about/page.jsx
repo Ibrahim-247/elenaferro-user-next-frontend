@@ -15,6 +15,7 @@ export default async function page() {
   const aboutMedlockData = await getAboutMedlockData();
   const differentData = await getAboutDifferentData();
   const scheduleData = await getAboutscheduleData();
+  console.log(bannerData);
 
   return (
     <div>
