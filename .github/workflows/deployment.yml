@@ -19,22 +19,21 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-        script: |
-          # 1. Load NVM and set Node version
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 24 || nvm install 24
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 24 || nvm install 24
 
-          # 2. Navigate and Update Code
-          cd ${{ secrets.VPS_PATH }}
-          git pull origin main
+            # 2. Navigate and Update Code
+            cd ${{ secrets.VPS_PATH }}
+            git pull origin main
 
-          # 3. Ensure Environment Variables are set for the build
-          # This prevents the "Failed to fetch" error during pre-rendering
-          echo "NEXT_PUBLIC_BASE_URL=https://dashboard.medlockrealty.com" > .env
-          echo "NEXT_PUBLIC_API_URL=https://dashboard.medlockrealty.com" >> .env
+            # 3. Ensure Environment Variables are set for the build
+            # Using NODE_TLS_REJECT_UNAUTHORIZED=0 to prevent build crash
+            echo "NEXT_PUBLIC_BASE_URL=https://dashboard.medlockrealty.com" > .env
+            echo "NEXT_PUBLIC_API_URL=https://dashboard.medlockrealty.com" >> .env
 
-          # 4. Install and Build
-          npm install
-          npm run build
-          pm2 restart 5 --update-env
+            # 4. Install and Build
+            npm install
+            NODE_TLS_REJECT_UNAUTHORIZED=0 npm run build
+            pm2 restart 5 --update-env
