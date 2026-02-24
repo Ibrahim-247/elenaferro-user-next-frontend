@@ -1,44 +1,44 @@
-name: Deploy to VPS
+# name: Deploy to VPS
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      - name: Deploy to VPS using password
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          # node-version এখান থেকে সরিয়ে স্ক্রিপ্টের ভেতরে নিতে হবে
-        script: |
-          # 1. Load NVM and set Node version
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 20 || nvm install 20
+#       - name: Deploy to VPS using password
+#         uses: appleboy/ssh-action@v1
+#         with:
+#           host: ${{ secrets.VPS_HOST }}
+#           username: ${{ secrets.VPS_USER }}
+#           password: ${{ secrets.VPS_PASSWORD }}
+#           # node-version এখান থেকে সরিয়ে স্ক্রিপ্টের ভেতরে নিতে হবে
+#         script: |
+#           # 1. Load NVM and set Node version
+#           export NVM_DIR="$HOME/.nvm"
+#           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#           nvm use 20 || nvm install 20
 
-          # 2. Navigate and Update Code
-          cd ${{ secrets.VPS_PATH }}
-          git pull origin main
+#           # 2. Navigate and Update Code
+#           cd ${{ secrets.VPS_PATH }}
+#           git pull origin main
 
-          # 3. Ensure Environment Variables are set for the build
-          # This prevents the "Failed to fetch" error during pre-rendering
-          echo "NEXT_PUBLIC_BASE_URL=https://dashboard.medlockrealty.com" > .env
-          echo "NEXT_PUBLIC_API_URL=https://dashboard.medlockrealty.com" >> .env
+#           # 3. Ensure Environment Variables are set for the build
+#           # This prevents the "Failed to fetch" error during pre-rendering
+#           echo "NEXT_PUBLIC_BASE_URL=https://dashboard.medlockrealty.com" > .env
+#           echo "NEXT_PUBLIC_API_URL=https://dashboard.medlockrealty.com" >> .env
 
-          # 4. Install and Build
-          npm install
-          npm run build
+#           # 4. Install and Build
+#           npm install
+#           npm run build
 
-          # 5. Restart with PM2
-          # Using your specific ID '2' as seen in your previous setup
-          pm2 restart 2 --update-env
+#           # 5. Restart with PM2
+#           # Using your specific ID '2' as seen in your previous setup
+#           pm2 restart 2 --update-env
