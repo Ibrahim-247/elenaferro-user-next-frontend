@@ -19,7 +19,7 @@ export async function getFaqData() {
 export async function getHeroData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/home_page/top_section",
   });
 }
@@ -46,7 +46,7 @@ export async function getAchivementData() {
 export async function getFeatureData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/home_page/explore_section",
   });
 }

@@ -1,13 +1,10 @@
 "use client";
-
 import Container from "@/common/Container";
 import feature from "../../assets/feature.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Features({ data }) {
-  console.log(data);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +69,7 @@ export default function Features({ data }) {
                 className="w-full h-full"
               >
                 <Image
-                  src={feature}
+                  src={item?.image || feature}
                   alt="feature"
                   width={500}
                   height={100}
