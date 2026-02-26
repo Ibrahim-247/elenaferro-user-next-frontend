@@ -73,6 +73,7 @@ export default function Features({ data }) {
                   alt="feature"
                   width={500}
                   height={100}
+                  unoptimized={true}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
