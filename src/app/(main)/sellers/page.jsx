@@ -6,6 +6,11 @@ import SellingProcess from "@/components/SellerComponent/SellingProcess";
 import SendMessage from "@/components/shared/SendMessage";
 import { getHomeSellerBanner, getSellingProcess } from "@/hooks/cms.api";
 
+export const metadata = {
+  title: "Sellers - Medlock Realty",
+  description: "Explore our latest sellers resources and guides.",
+};
+
 export default async function page() {
   const bannerData = await getHomeSellerBanner();
   const sellingProcess = await getSellingProcess();

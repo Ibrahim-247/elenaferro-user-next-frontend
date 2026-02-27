@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "@/common/Container";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
@@ -63,8 +62,9 @@ export default function About({ data }) {
             <motion.p
               variants={itemVariants}
               className="text-base md:text-xl font-normal text-[#404A60] my-8 lg:my-14 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: data?.description }}
-            ></motion.p>
+            >
+              {data?.description}
+            </motion.p>
             <motion.div variants={itemVariants}>
               <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 w-full sm:w-auto">
                 SCHDULE CONSULTATION <MoveRight />
@@ -73,13 +73,14 @@ export default function About({ data }) {
           </div>
           <motion.div
             variants={imageVariants}
-            className="max-w-full lg:max-w-115 w-full h-80 md:h-107 overflow-hidden rounded-lg shadow-xl"
+            className="max-w-full lg:max-w-115 w-full h-80 md:h-107 overflow-hidden shadow-xl"
           >
             <Image
               src={data?.image || aboutImg}
               alt="aboutImg"
               width={460}
               height={428}
+              unoptimized={true}
               className="w-full h-full object-cover"
             />
           </motion.div>

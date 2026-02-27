@@ -51,6 +51,24 @@ export async function getFeatureData() {
   });
 }
 
+// latest blog
+export async function getLatestBlogData() {
+  return useServerApi({
+    mode: "ISR",
+    revalidate: 86400,
+    endpoint: "/latest/blogs",
+  });
+}
+
+// all blog
+export async function getAllBlogData() {
+  return useServerApi({
+    mode: "ISR",
+    revalidate: 86400,
+    endpoint: "/blogs",
+  });
+}
+
 // ** About Page
 
 // banner section
@@ -134,8 +152,8 @@ export async function getPartnerAboutData() {
 // home seller banner section
 export async function getHomeSellerBanner() {
   return useServerApi({
-    mode: "ISR",
-    revalidate: 86400,
+    mode: "SSR",
+    revalidate: 60,
     endpoint: "/cms/seller_page/top_section",
   });
 }
@@ -143,8 +161,8 @@ export async function getHomeSellerBanner() {
 // selling process section
 export async function getSellingProcess() {
   return useServerApi({
-    mode: "ISR",
-    revalidate: 86400,
+    mode: "SSR",
+    revalidate: 60,
     endpoint: "/cms/seller_page/selling_process_section",
   });
 }

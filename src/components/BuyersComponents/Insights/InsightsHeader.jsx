@@ -2,7 +2,7 @@ import Container from "@/common/Container";
 
 export default function InsightsHeader() {
   return (
-    <div className="mb-12 md:mb-40 text-center">
+    <div className="mb-12 md:mb-30 text-center">
       <Container>
         <h1 className="text-4xl md:text-7xl font-semibold font-cormorant leading-tight">
           Local Market <span className="text-secondary">Insights</span>

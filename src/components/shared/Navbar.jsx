@@ -69,8 +69,7 @@ export default function Navbar() {
       ],
     },
     { name: "CONTACT", path: "/contact" },
-    { name: "Agents", path: "https://elenaferro-agent.vercel.app" },
-    { name: "Blogs", path: "/blogs" },
+    { name: "Agents", path: "https://admin.medlockrealty.com/auth/login" },
   ];
 
   // log out

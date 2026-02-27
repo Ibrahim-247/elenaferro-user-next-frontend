@@ -10,6 +10,11 @@ import {
   getAboutscheduleData,
 } from "@/hooks/cms.api";
 
+export const metadata = {
+  title: "About - Medlock Realty",
+  description: "Learn more about Medlock Realty",
+};
+
 export default async function page() {
   const bannerData = await getAboutBannerData();
   const aboutMedlockData = await getAboutMedlockData();

@@ -66,7 +66,7 @@ export default function SellingProcess({ data }) {
           </motion.div>
           <motion.div
             variants={imageVariants}
-            className="lg:ml-auto max-w-full lg:max-w-147 w-full h-80 md:h-125 lg:h-200 overflow-hidden rounded-lg shadow-xl"
+            className="lg:ml-auto max-w-full lg:max-w-147 w-full h-80 md:h-125 lg:h-180 overflow-hidden shadow-xl"
           >
             <Image
               src={procesImg}

@@ -46,7 +46,7 @@ export default function Consultation({ data }) {
           <motion.p
             variants={itemVariants}
             className="max-w-full lg:max-w-200 text-lg md:text-xl font-normal text-[#404A60] leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: data?.description }}
+            dangerouslySetInnerHTML={{ __html: data?.description || "" }}
           ></motion.p>
           <motion.div variants={itemVariants}>
             <Button className="rounded-none bg-secondary text-white hover:bg-secondary/90 h-11 px-8 w-full sm:w-auto">

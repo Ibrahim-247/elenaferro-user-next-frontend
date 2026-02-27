@@ -7,25 +7,53 @@ import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import blogImg from "@/assets/blog.png";
 import { motion } from "framer-motion";
+import useApiMutation from "@/hooks/Mutation/useApiMutation";
+import { useParams } from "next/navigation";
 
-const BlogDetails = ({ blog }) => {
+const BlogDetails = () => {
   const [shareUrl, setShareUrl] = useState("");
+  const params = useParams();
+  const slug = params.slug;
 
-  const data = blog || {
-    date: "January 10, 2022",
-    title:
-      "Winning Strategies: How To Triumph In A Bidding War In A Fast Real Estate Market",
-    image: blogImg,
-    content: [
-      "Lorem ipsum dolor sit amet consectetur. A eu facilisis leo tellus commodo. Posuere bibendum ornare netus nunc arcu quis. Eget nec magna lacus fermentum fermentum libero. Rhoncus sed faucibus urna cras praesent nisl elit. Donec rhoncus fringilla quisque urna sapien. Pharetra adipiscing euismod ultricies egestas aenean. Quis et morbi nec id iaculis. Volutpat velit urna in faucibus leo sapien leo semper. Mus feugiat nisl rutrum tristique nulla tristique rhoncus aliquam. Augue pharetra et erat sed aliquam faucibus.",
-      "Lorem Ipsum Dolor Sit ...",
-      "Lorem ipsum dolor sit amet consectetur. Faucibus et nisi est pellentesque proin porttitor odio. Id dolor vivamus at magna. Placerat eget facilisis praesent egestas elementum auctor etiam metus. Arcu sed lorem sollicitudin vel sapien nisi. Velit nisl ultricies blandit ultrices dis posuere aliquet. Lectus tortor ultricies tempus nisl id nisl duis. Interdum non fusce cursus erat nunc in. Faucibus varius elementum vel maecenas sed mi laoreet. Arcu purus nec libero condimentum diam dictum. Risus diam amet in viverra orci netus. Nisi aliquam enim sed sociis tempus elit morbi sed. Nunc et sem mattis sed arcu nunc. Vulputate in penatibus orci eros in.",
-    ],
-  };
+  const { data: blogDetails, isPending } = useApiMutation({
+    key: "blog-details",
+    endpoint: `/blogs/${slug}`,
+    method: "get",
+    params: { slug },
+    onError: (error) => {
+      console.error("Error from blog details API:", error);
+    },
+  });
 
   useEffect(() => {
     setShareUrl(window.location.href);
   }, []);
+
+  if (isPending) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <div
+          className="animate-spin inline-block size-10 border-3 border-current border-t-transparent rounded-[999px] text-primary"
+          role="status"
+          aria-label="loading"
+        ></div>
+      </div>
+    );
+  }
+
+  const data = {
+    date:
+      new Date(blogDetails?.data?.created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }) || "January 10, 2022",
+    title: blogDetails?.data?.title,
+    image: blogDetails?.data?.image || blogImg,
+    content:
+      blogDetails?.data?.description ||
+      '<h1 class="entry-title" itemprop="headline" style="box-sizing: inherit; border: 0px; font-size: 2rem; margin-right: 0px; margin-bottom: 15px; margin-left: 0px; outline: 0px; padding: 0px; vertical-align: baseline; clear: both; color: rgb(30, 41, 59); font-family: &quot;Cormorant Garamond&quot;, sans-serif; letter-spacing: normal;"><h3><b>Essential Real Estate Terminology: A Guide for Buyers and Sellers</b></h3></h1>',
+  };
 
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent("Check this out!");
@@ -49,8 +77,6 @@ const BlogDetails = ({ blog }) => {
     },
   ];
 
-  if (!shareUrl) return null;
-
   return (
     <div className="py-20 lg:py-32 bg-white overflow-hidden">
       <Container>
@@ -65,12 +91,12 @@ const BlogDetails = ({ blog }) => {
             <div className="flex items-center gap-2 text-gray-500 text-sm mb-6 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
               <Calendar className="size-4 text-secondary" />
               <span className="font-semibold tracking-wide uppercase text-xs">
-                {data.date}
+                {data?.date}
               </span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-semibold font-cormorant text-center max-w-5xl leading-[1.1] text-gray-900 tracking-tight">
-              {data.title}
+              {data?.title}
             </h1>
           </motion.div>
 
@@ -82,8 +108,10 @@ const BlogDetails = ({ blog }) => {
             className="w-full md:w-[90%] mx-auto mb-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] rounded-3xl overflow-hidden ring-1 ring-black/5"
           >
             <Image
-              src={data.image}
-              alt={data.title}
+              src={data?.image}
+              alt={data?.title}
+              width={1100}
+              height={600}
               className=" w-full h-auto object-cover max-h-150 hover:scale-105 transition-transform duration-1000 ease-in-out"
               priority
             />
@@ -97,32 +125,10 @@ const BlogDetails = ({ blog }) => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto w-full px-4 sm:px-0"
           >
-            <div className="content prose prose-lg md:prose-xl max-w-none text-gray-600 space-y-10 text-lg md:text-2xl leading-[1.7] font-normal">
-              {data.content.map((para, index) => {
-                if (para.includes("Lorem Ipsum Dolor Sit")) {
-                  return (
-                    <h3
-                      key={index}
-                      className="text-3xl md:text-4xl font-semibold font-cormorant text-gray-900 pt-8 pb-4"
-                    >
-                      {para}
-                    </h3>
-                  );
-                }
-                return (
-                  <p
-                    key={index}
-                    className={
-                      index === 0
-                        ? "first-letter:text-7xl first-letter:font-cormorant first-letter:float-left first-letter:mr-4 first-letter:mt-3 first-letter:text-secondary first-letter:font-bold"
-                        : ""
-                    }
-                  >
-                    {para}
-                  </p>
-                );
-              })}
-            </div>
+            <p
+              dangerouslySetInnerHTML={{ __html: data?.content || "" }}
+              className="text-2xl"
+            ></p>
 
             {/* Sharing Section */}
             <motion.div
@@ -140,18 +146,18 @@ const BlogDetails = ({ blog }) => {
                 <div className="h-px w-10 bg-gray-200"></div>
               </div>
               <div className="flex flex-wrap justify-center gap-5">
-                {socialLinks.map((social, index) => (
+                {socialLinks?.map((social, index) => (
                   <motion.a
                     key={index}
-                    href={social.url}
+                    href={social?.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -8, scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className={`size-12 flex items-center justify-center rounded-full text-white shadow-lg hover:shadow-2xl transition-all duration-300 ${social.bg}`}
-                    title={`Share on ${social.icon.type.name}`}
+                    title={`Share on ${social?.icon.type.name}`}
                   >
-                    {social.icon}
+                    {social?.icon}
                   </motion.a>
                 ))}
               </div>
