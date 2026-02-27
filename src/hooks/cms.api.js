@@ -122,7 +122,7 @@ export async function getBuyerBannerData() {
 export async function getBuyerBuyingProcessData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/buyer_page/buying_journey_section",
   });
 }
