@@ -8,8 +8,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Blogs({ data }) {
-  console.log(data);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

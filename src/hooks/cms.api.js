@@ -54,8 +54,8 @@ export async function getFeatureData() {
 // latest blog
 export async function getLatestBlogData() {
   return useServerApi({
-    mode: "SSR",
-    revalidate: 60,
+    mode: "ISR",
+    revalidate: 86400,
     endpoint: "/latest/blogs",
   });
 }
@@ -63,8 +63,8 @@ export async function getLatestBlogData() {
 // all blog
 export async function getAllBlogData() {
   return useServerApi({
-    mode: "SSR",
-    revalidate: 60,
+    mode: "ISR",
+    revalidate: 86400,
     endpoint: "/blogs",
   });
 }
@@ -132,8 +132,8 @@ export async function getBuyerBuyingProcessData() {
 // Lending partner banner section
 export async function getLendingBannerData() {
   return useServerApi({
-    mode: "SSR",
-    revalidate: 60,
+    mode: "ISR",
+    revalidate: 86400,
     endpoint: "/cms/landing_partner_page/top_section",
   });
 }
@@ -141,8 +141,8 @@ export async function getLendingBannerData() {
 //  partner about section
 export async function getPartnerAboutData() {
   return useServerApi({
-    mode: "SSR",
-    revalidate: 60,
+    mode: "ISR",
+    revalidate: 86400,
     endpoint: "/cms/landing_partner_page/partner_about_section",
   });
 }

@@ -22,7 +22,7 @@ export default function LoanApplication({ data }) {
             </h4>
             <p
               className="text-xl font-normal text-[#404A60]"
-              dangerouslySetInnerHTML={{ __html: data?.description }}
+              dangerouslySetInnerHTML={{ __html: data?.description || "" }}
             ></p>
             <Button className="bg-transparent text-secondary border-secondary rounded-none border hover:bg-secondary hover:text-white h-11 px-5!">
               START MY LOAN APPLICATION <MoveRight className="size-6" />

@@ -126,7 +126,7 @@ const BlogDetails = () => {
             className="max-w-4xl mx-auto w-full px-4 sm:px-0"
           >
             <p
-              dangerouslySetInnerHTML={{ __html: data?.content }}
+              dangerouslySetInnerHTML={{ __html: data?.content || "" }}
               className="text-2xl"
             ></p>
 

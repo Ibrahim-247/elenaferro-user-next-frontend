@@ -4,8 +4,6 @@ import Container from "@/common/Container";
 import { motion } from "framer-motion";
 
 export default function BlogWraper({ blogList }) {
-  console.log(blogList);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
