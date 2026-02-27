@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "@/common/Container";
 import procesImg from "../../assets/buyingProcess.png";
 import Image from "next/image";
