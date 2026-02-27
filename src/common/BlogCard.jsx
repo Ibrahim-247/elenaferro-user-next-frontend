@@ -22,6 +22,7 @@ export default function BlogCard({ data }) {
             height={280}
             src={data?.image || blogImg}
             alt="blogImg"
+            unoptimized={true}
             className="w-full h-full object-cover"
           />
         </motion.div>
