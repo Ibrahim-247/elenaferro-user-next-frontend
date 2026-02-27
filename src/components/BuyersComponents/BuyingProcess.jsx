@@ -73,6 +73,7 @@ export default function BuyingProcess({ data }) {
               alt="procesImg"
               width={588}
               height={848}
+              unoptimized={true}
               className="w-full h-full object-cover grayscale-20 hover:grayscale-0 transition-all duration-500"
             />
           </motion.div>
