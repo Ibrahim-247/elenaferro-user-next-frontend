@@ -7,7 +7,9 @@ import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function Blogs() {
+export default function Blogs({ data }) {
+  console.log(data);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,9 +60,9 @@ export default function Blogs() {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 lg:my-20"
         >
-          {[...Array(3)].map((_, index) => (
+          {data?.map((blog, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <BlogCard />
+              <BlogCard data={blog} />
             </motion.div>
           ))}
         </motion.div>

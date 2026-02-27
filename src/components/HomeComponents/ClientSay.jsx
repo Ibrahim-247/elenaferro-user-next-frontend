@@ -15,51 +15,29 @@ const reviewsData = [
   {
     id: 1,
     review:
-      "Medlock Realty gives me the flexibility I was looking for without the excessive fees. Everything is straightforward, and I always know what I’m paying. It’s been a refreshing change from my previous brokerage.",
-    author: "Licensed Georgia Real Estate Agent",
+      "The absolute best team to work with! Extremely organized, personable and knowledgeable. Fierce negotiators and really gave us an exceptional experience!",
+    author: "Casey Johnson",
     location: "Georgia",
   },
   {
     id: 2,
     review:
-      "The onboarding process was smooth and efficient. I appreciated how clear the expectations were from day one. It feels professional without being overly rigid.",
-    author: "Atlanta Metro Area Agent",
+      "Elena and Aryan were absolutely wonderful to work with. They listened to all our hopes and concerns and knew exactly how to help us find what we needed!",
+    author: "Sandy Williams",
     location: "Atlanta Metro Area",
   },
   {
     id: 3,
-    review:
-      "I like that I can focus on my clients instead of worrying about unnecessary brokerage costs. The systems are clean, modern, and easy to use.",
-    author: "Independent Agent",
+    review: `We love them!!!Hands down the most professional agents we have worked with. Totally reliable and efficient.`,
+    author: "Robbie White",
     location: "North Fulton",
   },
   {
     id: 4,
     review:
-      "This model makes sense for how I actually work. No pressure, no confusing splits, just a clear structure and solid broker support when I need it.",
-    author: "Georgia Salesperson",
+      "We relocated from the West Coast to Atlanta for work and they really gave us the white glove service! So helpful and knowledgeable!",
+    author: "Gina Choi",
     location: "Georgia",
-  },
-  {
-    id: 5,
-    review:
-      "Medlock Realty strikes a great balance between independence and oversight. I never feel micromanaged, but I also don’t feel like I’m on my own.",
-    author: "Residential Real Estate Agent",
-    location: "Georgia",
-  },
-  {
-    id: 6,
-    review:
-      "What stood out to me was the transparency. No hidden fees, no surprises, and no complicated commission structures. I knew exactly what I was signing up for, which is rare in this industry.",
-    author: "Georgia Licensed Agent",
-    location: "Georgia",
-  },
-  {
-    id: 7,
-    review:
-      "As someone who didn’t need constant hand-holding but still wanted reliable broker support, this setup works extremely well. The onboarding tools and compliance process are clear and efficient.",
-    author: "Metro Atlanta Agent",
-    location: "Metro Atlanta",
   },
 ];
 
@@ -108,12 +86,20 @@ export default function ClientSay() {
           variants={containerVariants}
           className="space-y-3 text-center"
         >
-          <motion.p variants={itemVariants} className="text-xl font-normal text-secondary">WHAT OUR</motion.p>
-          <motion.h4 variants={itemVariants} className="text-4xl lg:text-6xl font-semibold uppercase font-cormorant">
-            Agents SAY
+          <motion.p
+            variants={itemVariants}
+            className="text-xl font-normal uppercase text-secondary"
+          >
+            WHAT OUR
+          </motion.p>
+          <motion.h4
+            variants={itemVariants}
+            className="text-4xl lg:text-6xl font-semibold uppercase font-cormorant"
+          >
+            Clients Say
           </motion.h4>
         </motion.div>
-        
+
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -130,7 +116,7 @@ export default function ClientSay() {
                     {item?.review}
                     <div className="w-24 bg-secondary h-0.5"></div>
                     <p className="text-2xl font-semibold font-cormorant">
-                      {item?.location}
+                      {item?.author}
                     </p>
                   </div>
                 </CarouselItem>
@@ -139,7 +125,7 @@ export default function ClientSay() {
           </Carousel>
 
           <div className="flex justify-center gap-3 mt-6">
-            {Array.from({ length: count }).map((_, index) => (
+            {Array.from({ length: reviewsData?.length }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}

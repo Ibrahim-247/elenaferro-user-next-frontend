@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Medlockrealty User Portal",
+  title: "Medlock Realty - Atlanta Real Estate Specialists",
   description: "Explore User",
 };
 

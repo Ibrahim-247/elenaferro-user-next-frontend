@@ -37,7 +37,7 @@ export default function NewestProperty() {
         >
           <motion.h4
             variants={itemVariants}
-            className="text-xl font-semibold text-secondary"
+            className="text-xl font-normal text-secondary"
           >
             JUST LISTED
           </motion.h4>
