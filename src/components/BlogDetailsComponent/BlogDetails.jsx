@@ -113,7 +113,7 @@ const BlogDetails = () => {
               width={1100}
               height={600}
               className=" w-full h-auto object-cover max-h-150 hover:scale-105 transition-transform duration-1000 ease-in-out"
-              priority
+              unoptimized={true}
             />
           </motion.div>
 
