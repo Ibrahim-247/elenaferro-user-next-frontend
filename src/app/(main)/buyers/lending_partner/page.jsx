@@ -1,9 +1,12 @@
 import CommonBanner from "@/common/CommonBanner";
-import HomeBuyingGuideForm from "@/components/BuyersComponents/HomeBuyingGuideForm";
-import ClientSay from "@/components/HomeComponents/ClientSay";
 import LendingHeader from "@/components/LendingPartnerComponent/LendingHeader";
 import LoanApplication from "@/components/LendingPartnerComponent/LoanApplication";
 import { getLendingBannerData, getPartnerAboutData } from "@/hooks/cms.api";
+
+export const metadata = {
+  title: "Lending Partner - Medlock Realty",
+  description: "Explore our latest lending partner resources and guides.",
+};
 
 export default async function page() {
   const bannerData = await getLendingBannerData();
@@ -18,8 +21,6 @@ export default async function page() {
       />
       <LendingHeader />
       <LoanApplication data={aboutData?.data} />
-      <HomeBuyingGuideForm />
-      <ClientSay />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import AboutUs from "@/components/HomeComponents/AboutUs";
-import Achievement from "@/components/HomeComponents/Achievement";
 import Blogs from "@/components/HomeComponents/Blogs";
 import ClientSay from "@/components/HomeComponents/ClientSay";
 import Features from "@/components/HomeComponents/Features";
@@ -8,26 +7,25 @@ import NewestProperty from "@/components/HomeComponents/NewestProperty";
 import SendMessage from "@/components/shared/SendMessage";
 import {
   getAboutData,
-  getAchivementData,
   getFeatureData,
   getHeroData,
+  getLatestBlogData,
 } from "@/hooks/cms.api";
 
 export default async function page() {
   const heroData = await getHeroData();
   const aboutData = await getAboutData();
-  const achivementData = await getAchivementData();
   const featureData = await getFeatureData();
+  const latestBlogData = await getLatestBlogData();
 
   return (
     <div>
       <Hero data={heroData?.data} />
       <AboutUs data={aboutData?.data} />
       <NewestProperty />
-      <Achievement data={achivementData?.data} />
       <Features data={featureData?.data} />
       <ClientSay />
-      <Blogs />
+      <Blogs data={latestBlogData?.data?.data} />
       <SendMessage />
     </div>
   );

@@ -5,6 +5,11 @@ import HomeBuyingGuideForm from "@/components/BuyersComponents/HomeBuyingGuideFo
 import SendMessage from "@/components/shared/SendMessage";
 import { getBuyerBuyingProcessData } from "@/hooks/cms.api";
 
+export const metadata = {
+  title: "Buyers - Medlock Realty",
+  description: "Explore our latest buyer resources and guides.",
+};
+
 export default async function page() {
   // const bannerData = await getBuyerBannerData();
   const buyingProcces = await getBuyerBuyingProcessData();

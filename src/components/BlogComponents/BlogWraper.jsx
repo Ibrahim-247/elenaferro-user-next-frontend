@@ -3,7 +3,7 @@ import BlogCard from "@/common/BlogCard";
 import Container from "@/common/Container";
 import { motion } from "framer-motion";
 
-export default function BlogWraper() {
+export default function BlogWraper({ blogList }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,9 +40,9 @@ export default function BlogWraper() {
           animate="visible"
           className="lg:grid-cols-3 grid gap-6 mt-20"
         >
-          {[...Array(6)].map((_, index) => (
+          {blogList?.map((blog, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <BlogCard />
+              <BlogCard data={blog} />
             </motion.div>
           ))}
         </motion.div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function BlogCard() {
+export default function BlogCard({ data }) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -18,7 +18,9 @@ export default function BlogCard() {
           className="w-full h-full"
         >
           <Image
-            src={blogImg}
+            width={320}
+            height={280}
+            src={data?.image || blogImg}
             alt="blogImg"
             className="w-full h-full object-cover"
           />
@@ -26,13 +28,14 @@ export default function BlogCard() {
       </div>
       <div className="p-8 space-y-4 grow">
         <h3 className="text-lg font-medium text-secondary line-clamp-2">
-          Essential Real Estate Terminology: A Guide for Buyers and Sellers
+          {data?.title ||
+            "Essential Real Estate Terminology: A Guide for Buyers and Sellers"}
         </h3>
         <p className="text-base font-normal line-clamp-3">
-          Embarking on a journey to buy or sell a home can be an exciting yet
-          daunting experience. Amidst…
+          {data?.sub_title ||
+            "Embarking on a journey to buy or sell a home can be an exciting yet daunting experience. Amidst… "}
         </p>
-        <Link href="/blogs/1">
+        <Link href={`/blogs/${data?.slug || 1}`}>
           <Button className="rounded-none bg-secondary text-white hover:bg-secondary/90">
             LEARN MORE
           </Button>
