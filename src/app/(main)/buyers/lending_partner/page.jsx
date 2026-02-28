@@ -12,8 +12,6 @@ export default async function page() {
   const bannerData = await getLendingBannerData();
   const aboutData = await getPartnerAboutData();
 
-  console.log(bannerData);
-
   return (
     <div>
       <CommonBanner
