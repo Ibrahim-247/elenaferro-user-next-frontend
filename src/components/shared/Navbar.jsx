@@ -1,5 +1,4 @@
 "use client";
-
 import Container from "@/common/Container";
 import logo from "../../assets/footer_logo.png";
 import logo2 from "../../assets/logo.png";
@@ -15,7 +14,6 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useSelector } from "react-redux";
 import { useLogout } from "@/hooks/auth.api";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -92,19 +90,13 @@ export default function Navbar() {
         <Container>
           <div className="flex items-center justify-between py-4">
             <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Image
-                  src={isColorBlack ? logo2 : logo}
-                  alt="logo"
-                  className="w-50 lg:w-64"
-                  priority
-                />
-              </motion.div>
+              <Image
+                src={isColorBlack ? logo2 : logo}
+                alt="logo"
+                className="w-50 lg:w-64"
+                priority
+              />
             </Link>
-
             <div
               className={`hidden lg:flex items-center gap-6 xl:gap-11 text-sm xl:text-base font-medium ${
                 isColorBlack ? "text-primary" : "text-white"
@@ -118,13 +110,13 @@ export default function Navbar() {
                       <DropdownMenuTrigger asChild>
                         <motion.span
                           whileHover={{ y: -2 }}
-                          className="cursor-pointer hover:text-secondary transition-colors flex items-center gap-1 uppercase"
+                          className="cursor-pointer  transition-colors flex items-center gap-1 uppercase"
                         >
                           {item.name} <ChevronDown className="size-4" />
                         </motion.span>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
-                        className="bg-white text-black mt-2 border-none p-0 shadow-xl rounded-none min-w-50"
+                        className="bg-white text-primary mt-2 font-montserrat border-none p-0 shadow-xl rounded-none min-w-50"
                         side="bottom"
                         align="start"
                       >
@@ -133,7 +125,7 @@ export default function Navbar() {
                             <DropdownMenuItem
                               key={subIndex}
                               asChild
-                              className="hover:bg-secondary! hover:text-white! rounded-none cursor-pointer uppercase border-b border-gray-100 last:border-0 font-normal py-4 px-6"
+                              className="hover:bg-secondary! hover:text-white! flex items-center duration-200 justify-center rounded-none cursor-pointer uppercase border-b border-gray-300 last:border-0 font-normal py-3 px-6"
                             >
                               <Link href={subItem.path}>{subItem.name}</Link>
                             </DropdownMenuItem>
@@ -148,10 +140,8 @@ export default function Navbar() {
                       {item?.name === "SEARCH" ? (
                         <a
                           href={item.path}
-                          className={`transition relative py-1 hover:text-secondary uppercase ${
-                            active
-                              ? "text-secondary border-b-2 border-secondary"
-                              : ""
+                          className={`transition relative py-1 uppercase ${
+                            active ? "border-b-2 border-white" : ""
                           }`}
                         >
                           {item.name}
@@ -159,10 +149,8 @@ export default function Navbar() {
                       ) : (
                         <Link
                           href={item.path}
-                          className={`transition relative py-1 hover:text-secondary uppercase ${
-                            active
-                              ? "text-secondary border-b-2 border-secondary"
-                              : ""
+                          className={`transition relative py-1 uppercase ${
+                            active ? "border-b-2 border-white" : ""
                           }`}
                         >
                           {item.name}
@@ -173,7 +161,7 @@ export default function Navbar() {
                 }
               })}
             </div>
-
+            =
             <div
               className={`flex items-center gap-4 md:gap-6 ${
                 isColorBlack ? "text-black" : "text-white"

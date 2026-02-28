@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary-color: #0f0f0f;
+  --primary-color: #51565d;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -12,7 +12,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #171717;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #928b7c;
   --secondary-foreground: oklch(0.205 0 0);
@@ -46,6 +46,7 @@
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
   --font-cormorant: var(--font-cormorant);
+  --font-montserrat: var(--font-montserrat);
   --color-primary: var(--primary-color);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -92,7 +93,7 @@
     @apply font-inter text-primary;
   }
 
-    html {
+  html {
     scroll-behavior: smooth;
   }
 }

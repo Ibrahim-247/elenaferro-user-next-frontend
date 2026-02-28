@@ -37,7 +37,7 @@ export default function SendMessage() {
           <div className="space-y-3 text-center">
             <motion.p
               variants={itemVariants}
-              className="text-xl font-normal text-secondary"
+              className="text-xl font-normal text-secondary font-montserrat"
             >
               SEND A
             </motion.p>

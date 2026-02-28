@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import ReduxProvider from "@/provider/ReduxProvider";
@@ -14,6 +14,11 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "Medlock Realty - Atlanta Real Estate Specialists",
   description: "Explore User",
@@ -22,7 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${inter.variable} antialiased`}>
+      <body
+        className={`${cormorant.variable} ${inter.variable} ${montserrat.variable} antialiased`}
+      >
         <Toaster />
         <ReduxProvider>
           <QueryProvider>{children}</QueryProvider>{" "}

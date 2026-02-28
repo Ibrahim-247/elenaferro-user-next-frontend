@@ -84,7 +84,7 @@ export async function getAboutBannerData() {
 export async function getAboutMedlockData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 120,
     endpoint: "/cms/about_page/medilock_section",
   });
 }
@@ -133,7 +133,7 @@ export async function getBuyerBuyingProcessData() {
 export async function getLendingBannerData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/landing_partner_page/top_section",
   });
 }
@@ -142,7 +142,7 @@ export async function getLendingBannerData() {
 export async function getPartnerAboutData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 120,
     endpoint: "/cms/landing_partner_page/partner_about_section",
   });
 }
@@ -153,7 +153,7 @@ export async function getPartnerAboutData() {
 export async function getHomeSellerBanner() {
   return useServerApi({
     mode: "SSR",
-    revalidate: 60,
+    revalidate: 120,
     endpoint: "/cms/seller_page/top_section",
   });
 }

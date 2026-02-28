@@ -88,7 +88,7 @@ export default function ClientSay() {
         >
           <motion.p
             variants={itemVariants}
-            className="text-xl font-normal uppercase text-secondary"
+            className="text-xl font-normal uppercase text-secondary font-montserrat"
           >
             WHAT OUR
           </motion.p>
