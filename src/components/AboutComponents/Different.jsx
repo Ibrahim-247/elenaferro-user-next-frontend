@@ -35,7 +35,7 @@ export default function Different({ data }) {
         >
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl font-semibold text-secondary tracking-widest"
+            className="text-lg md:text-xl font-normal text-secondary tracking-widest font-montserrat"
           >
             {data?.title || "WE ARE"}
           </motion.p>
@@ -46,7 +46,7 @@ export default function Different({ data }) {
             {data?.sub_title || "DIFFERENT"}
           </motion.h4>
         </motion.div>
-        
+
         <motion.div
           initial="hidden"
           whileInView="visible"

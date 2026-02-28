@@ -7,6 +7,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function About({ data }) {
+  console.log(data);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -48,7 +50,7 @@ export default function About({ data }) {
           <div className="max-w-full lg:max-w-200 w-full">
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl font-semibold text-secondary tracking-widest"
+              className="text-lg md:text-xl font-normal text-secondary tracking-widest font-montserrat"
             >
               {data?.sub_title}
             </motion.p>
