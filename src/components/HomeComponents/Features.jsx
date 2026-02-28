@@ -36,7 +36,7 @@ export default function Features({ data }) {
         >
           <motion.p
             variants={itemVariants}
-            className="text-xl font-normal text-secondary"
+            className="text-xl font-normal text-secondary font-montserrat"
           >
             {data?.sub_title}
           </motion.p>

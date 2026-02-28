@@ -39,7 +39,7 @@ export default function AboutUs({ data }) {
           className="space-y-8"
         >
           <motion.div variants={itemVariants} className="text-center space-y-2">
-            <p className="text-xl font-normal text-secondary">
+            <p className="text-xl font-normal text-secondary font-montserrat">
               {data?.sub_title}
             </p>
             <h3 className="text-4xl lg:text-6xl font-semibold font-cormorant">
