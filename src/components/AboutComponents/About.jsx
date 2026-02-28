@@ -7,8 +7,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function About({ data }) {
-  console.log(data);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
