@@ -67,7 +67,7 @@ export default function Navbar() {
       ],
     },
     { name: "CONTACT", path: "/contact" },
-    { name: "Agents", path: "https://admin.medlockrealty.com/auth/login" },
+    { name: "Agents", path: "https://portal.medlockrealty.com/auth/login" },
   ];
 
   // log out
@@ -127,7 +127,13 @@ export default function Navbar() {
                               asChild
                               className="hover:bg-secondary! hover:text-white! flex items-center duration-200 justify-center rounded-none cursor-pointer uppercase border-b border-gray-300 last:border-0 font-normal py-3 px-6"
                             >
-                              <Link href={subItem.path}>{subItem.name}</Link>
+                              {subItem?.name === "Home Valuation" ||
+                              subItem?.name === "Mortgage Calculator" ||
+                              subItem?.name === "Insights" ? (
+                                <a href={subItem.path}>{subItem.name}</a>
+                              ) : (
+                                <Link href={subItem.path}>{subItem.name}</Link>
+                              )}
                             </DropdownMenuItem>
                           ))}
                         </AnimatePresence>
@@ -137,7 +143,7 @@ export default function Navbar() {
                 } else {
                   return (
                     <motion.div key={index} whileHover={{ y: -2 }}>
-                      {item?.name === "SEARCH" ? (
+                      {item?.name === "HOME" || item?.name === "SEARCH" ? (
                         <a
                           href={item.path}
                           className={`transition relative py-1 uppercase ${
@@ -161,7 +167,6 @@ export default function Navbar() {
                 }
               })}
             </div>
-            =
             <div
               className={`flex items-center gap-4 md:gap-6 ${
                 isColorBlack ? "text-black" : "text-white"
@@ -223,20 +228,43 @@ export default function Navbar() {
                           {item.name}
                         </span>
                         <div className="flex flex-col gap-3 pl-4 border-l-2 border-secondary/20">
-                          {item.submenu.map((subItem, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              href={subItem.path}
-                              className="text-lg font-medium text-primary hover:text-secondary py-1 transition-colors"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                          {item.submenu.map((subItem, subIndex) =>
+                            subItem?.name === "Home Valuation" ||
+                            subItem?.name === "Mortgage Calculator" ||
+                            subItem?.name === "Insights" ? (
+                              <a
+                                key={subIndex}
+                                href={subItem.path}
+                                className="text-lg font-medium text-primary hover:text-secondary py-1 transition-colors"
+                              >
+                                {subItem.name}
+                              </a>
+                            ) : (
+                              <Link
+                                key={subIndex}
+                                href={subItem.path}
+                                className="text-lg font-medium text-primary hover:text-secondary py-1 transition-colors"
+                              >
+                                {subItem.name}
+                              </Link>
+                            ),
+                          )}
                         </div>
                       </div>
                     );
                   }
-                  return (
+                  return item?.name === "SEARCH" ||
+                    item?.name === "HOME" ||
+                    item?.name === "Home Valuation" ||
+                    item?.name === "Mortgage Calculator" ? (
+                    <a
+                      key={index}
+                      href={item.path}
+                      className="text-xl font-semibold text-primary hover:text-secondary py-2 border-b border-gray-100 transition-colors uppercase"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
                     <Link
                       key={index}
                       href={item.path}

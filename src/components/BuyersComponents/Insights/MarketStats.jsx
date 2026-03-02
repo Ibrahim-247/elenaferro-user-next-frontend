@@ -1,5 +1,7 @@
+"use client";
 import Container from "@/common/Container";
 import { Home, BarChart2, Clock, MoveUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const stats = [
   {
@@ -33,10 +35,52 @@ const stats = [
 ];
 
 export default function MarketStats() {
+  // 1. Define your Default Area here
+  const DEFAULT_CITY = "Toronto";
+  const [locationName, setLocationName] = useState(DEFAULT_CITY);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function initMarketReport() {
+      try {
+        // 1. Fetch location from our OWN internal API (No CORS issues!)
+        const res = await fetch("/api/location");
+        const data = await res.json();
+
+        if (data.city) {
+          setLocationName(data.city);
+        }
+      } catch (err) {
+        console.error("Location detection failed, using default.");
+      } finally {
+        setLoading(false);
+      }
+
+      // 2. Load the Web4Realty Script
+      window.idxjsSettings = {
+        token:
+          "31250c8ca6754439eb82780e8c8016a338bf2f9e5697b53134e42ba951d87da4",
+      };
+
+      const scriptSrc = "https://idxjs.web4realty.com/";
+      const existingScript = document.querySelector(
+        `script[src="${scriptSrc}"]`,
+      );
+      if (existingScript) existingScript.remove();
+
+      const script = document.createElement("script");
+      script.src = scriptSrc;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    initMarketReport();
+  }, []);
+
   return (
     <div className="pb-12 md:pb-20">
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -62,7 +106,22 @@ export default function MarketStats() {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
+        {loading ? (
+          "Loading location data..."
+        ) : (
+          <div className="w-full">
+            <div
+              data-idx-component="IDXComponent"
+              data-idx-props={JSON.stringify({
+                sid: "idxcmp_6QYS82bZEf0YvBtc1bUhZb",
+                type: "market_report",
+                // We pass the dynamic city name here
+                city: locationName,
+              })}
+            ></div>
+          </div>
+        )}
       </Container>
     </div>
   );

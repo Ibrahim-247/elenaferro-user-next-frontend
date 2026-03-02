@@ -14,9 +14,9 @@ export default function InsightsPage() {
     <div className="bg-[#FCFCFB] pt-34 pb-30 lg:pt-60 lg:pb-40">
       <InsightsHeader />
       <MarketStats />
-      <PriceChart />
-      <MarketTable />
-      <MarketReportForm />
+      {/* <PriceChart /> */}
+      {/* <MarketTable /> */}
+      {/* <MarketReportForm /> */}
     </div>
   );
 }
