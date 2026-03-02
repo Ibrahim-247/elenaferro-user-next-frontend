@@ -8,7 +8,7 @@ import { useServerApi } from "./useServerApi";
 export async function getFaqData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/faqs",
   });
 }
@@ -28,7 +28,7 @@ export async function getHeroData() {
 export async function getAboutData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/home_page/about_section",
   });
 }
@@ -37,7 +37,7 @@ export async function getAboutData() {
 export async function getAchivementData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/home_page/achivement_section",
   });
 }
@@ -55,7 +55,7 @@ export async function getFeatureData() {
 export async function getLatestBlogData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/latest/blogs",
   });
 }
@@ -64,7 +64,7 @@ export async function getLatestBlogData() {
 export async function getAllBlogData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/blogs",
   });
 }
@@ -75,7 +75,7 @@ export async function getAllBlogData() {
 export async function getAboutBannerData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/about_page/top_section",
   });
 }
@@ -84,7 +84,7 @@ export async function getAboutBannerData() {
 export async function getAboutMedlockData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 120,
+    revalidate: 60,
     endpoint: "/cms/about_page/medilock_section",
   });
 }
@@ -93,7 +93,7 @@ export async function getAboutMedlockData() {
 export async function getAboutDifferentData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/about_page/different_section",
   });
 }
@@ -102,7 +102,7 @@ export async function getAboutDifferentData() {
 export async function getAboutscheduleData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/about_page/schdule_section",
   });
 }
@@ -113,7 +113,7 @@ export async function getAboutscheduleData() {
 export async function getBuyerBannerData() {
   return useServerApi({
     mode: "ISR",
-    revalidate: 86400,
+    revalidate: 60,
     endpoint: "/cms/buyer_page/top_section",
   });
 }
