@@ -1,159 +1,81 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
+import { useEffect } from "react";
 import Container from "@/common/Container";
 
 export default function MortgageForm() {
-  const [homePrice, setHomePrice] = useState(300000);
-  const [downPaymentPercent, setDownPaymentPercent] = useState(20);
-  const [loanTerm, setLoanTerm] = useState(30);
-  const [interestRate, setInterestRate] = useState(6.5);
-  const [showResult, setShowResult] = useState(false);
+  useEffect(() => {
+    // 1. Set global settings
+    window.idxjsSettings = {
+      token: "31250c8ca6754439eb82780e8c8016a338bf2f9e5697b53134e42ba951d87da4",
+    };
 
-  const downPayment = useMemo(
-    () => (homePrice * downPaymentPercent) / 100,
-    [homePrice, downPaymentPercent],
-  );
+    const scriptUrl = "https://idxjs.web4realty.com/";
 
-  const loanAmount = homePrice - downPayment;
+    // 2. Clear existing script to avoid conflicts (standard precaution)
+    const existingScript = document.querySelector(`script[src="${scriptUrl}"]`);
+    if (existingScript) existingScript.remove();
 
-  const monthlyPayment = useMemo(() => {
-    const monthlyRate = interestRate / 100 / 12;
-    const totalMonths = loanTerm * 12;
+    // 3. Append the script
+    const script = document.createElement("script");
+    script.src = scriptUrl;
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
 
-    if (monthlyRate === 0) {
-      return loanAmount / totalMonths;
-    }
-
-    return (
-      (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) /
-      (Math.pow(1 + monthlyRate, totalMonths) - 1)
-    );
-  }, [loanAmount, interestRate, loanTerm]);
+    return () => {
+      if (script) script.remove();
+    };
+  }, []);
 
   return (
-    <div className="mt-26">
+    <div className="mt-26 py-12 lg:py-20">
       <Container>
-        <div className="max-w-150 mx-auto px-4 py-12 space-y-8">
-          {/* Header */}
-          <div className="text-center space-y-2">
-            <h1 className="text-5xl font-cormorant font-bold text-secondary">
+        <div className="w-full space-y-10">
+          {/* Header Section */}
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl md:text-6xl font-cormorant font-bold text-secondary uppercase">
               Mortgage <span className="text-muted-foreground">Calculator</span>
             </h1>
-            <p className="text-sm text-muted-foreground">
-              Estimate your monthly mortgage payments with our easy-to-use
-              calculator.
+            <p className="text-muted-foreground max-w-xl mx-auto font-montserrat">
+              Plan your future home purchase with confidence. Use our calculator
+              to estimate your monthly payments and see how different terms
+              affect your budget.
             </p>
           </div>
 
-          {/* Form */}
-          <div className="md:p-6 space-y-5">
-            {/* Home Price */}
-            <div className="space-y-1">
-              <label className="text-sm font-medium">Home Price</label>
-              <Input
-                type="number"
-                value={homePrice}
-                onChange={(e) => setHomePrice(Number(e.target.value))}
-              />
-            </div>
-
-            {/* Down Payment */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Down Payment</label>
-              <Input value={`$${downPayment.toLocaleString()}`} disabled />
-
-              <div className="flex items-center gap-4">
-                <Slider
-                  value={[downPaymentPercent]}
-                  min={0}
-                  max={50}
-                  step={1}
-                  onValueChange={(v) => setDownPaymentPercent(v[0])}
-                />
-                <span className="text-sm text-muted-foreground w-10">
-                  {downPaymentPercent}%
-                </span>
-              </div>
-            </div>
-
-            {/* Loan Term */}
-            <div className="space-y-1">
-              <label className="text-sm font-medium">Loan Term</label>
-              <Select
-                value={loanTerm.toString()}
-                onValueChange={(v) => setLoanTerm(Number(v))}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select term" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="15">15 years</SelectItem>
-                  <SelectItem value="20">20 years</SelectItem>
-                  <SelectItem value="30">30 years</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Interest Rate */}
-            <div className="space-y-1">
-              <label className="text-sm font-medium">Interest Rate</label>
-              <div className="relative">
-                <Input
-                  type="number"
-                  step="0.01"
-                  value={interestRate}
-                  onChange={(e) => setInterestRate(Number(e.target.value))}
-                />
-                <span className="absolute right-3 top-2.5 text-sm text-muted-foreground">
-                  %
-                </span>
-              </div>
-            </div>
-
-            {/* Calculate */}
-            <Button
-              className="w-full bg-secondary text-white hover:bg-secondary/90 h-11"
-              onClick={() => setShowResult(true)}
-            >
-              Calculate
-            </Button>
+          {/* Web4Realty IDX Component Container */}
+          <div className="bg-[#FAF9F6] py-10 rounded-2xl border border-gray-100 shadow-sm">
+            <div
+              className="min-h-125 w-full"
+              data-idx-component="IDXComponent"
+              data-idx-props={JSON.stringify({
+                sid: "idxcmp_8fM7R8RMDTaI9fiI9Hr2tQ",
+                type: "mortgage_calculator",
+              })}
+            ></div>
           </div>
 
-          {/* Result */}
-          {showResult && (
-            <div className="p-6 space-y-3">
-              <h3 className="text-lg font-semibold">
-                Estimated Monthly Payment
-              </h3>
-              <p className="text-3xl font-bold text-secondary">
-                ${monthlyPayment.toFixed(2)}
+          {/* SEO/Instructional Text */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-600 font-montserrat leading-relaxed">
+            <div className="space-y-3">
+              <h3 className="font-bold text-secondary uppercase">How to use</h3>
+              <p>
+                Enter the property price and your intended down payment. You can
+                adjust interest rates and loan lengths (15, 20, or 30 years) to
+                see how your monthly obligation changes.
               </p>
-
-              <div className="text-sm text-muted-foreground space-y-1">
-                <p>Loan Amount: ${loanAmount.toLocaleString()}</p>
-                <p>Down Payment: ${downPayment.toLocaleString()}</p>
-                <p>Term: {loanTerm} years</p>
-                <p>Interest Rate: {interestRate}%</p>
-              </div>
             </div>
-          )}
-
-          {/* Disclaimer */}
-          <div className="bg-muted/40 rounded-lg p-4 text-sm text-muted-foreground">
-            <strong>Disclaimer:</strong> These figures are estimates only and do
-            not represent exact loan terms. Please consult your lender for
-            official rates.
+            <div className="space-y-3">
+              <h3 className="font-bold text-secondary uppercase">
+                Why it matters
+              </h3>
+              <p>
+                Understanding your Debt-to-Income (DTI) ratio is a crucial first
+                step in the home buying process. Most lenders prefer a total DTI
+                below 43%.
+              </p>
+            </div>
           </div>
         </div>
       </Container>

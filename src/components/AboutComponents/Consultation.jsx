@@ -39,7 +39,7 @@ export default function Consultation({ data }) {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl font-semibold text-secondary max-w-full lg:max-w-125 w-full leading-tight"
+            className="text-2xl md:text-3xl font-semibold text-secondary max-w-full lg:max-w-110 whitespace-normal w-full leading-tight"
           >
             {data?.title}
           </motion.h2>
