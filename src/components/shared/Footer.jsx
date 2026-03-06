@@ -108,13 +108,25 @@ export default function Footer() {
               <div className="font-normal space-y-4">
                 {footerData?.RESOURCES?.map((item, index) => (
                   <motion.div key={index} whileHover={{ x: 5 }}>
-                    <Link
-                      href={item?.href}
-                      className="flex items-center gap-2 hover:text-secondary transition-colors"
-                    >
-                      <Caret className="text-secondary size-3" />
-                      {item?.label}
-                    </Link>
+                    {item?.href.includes("search") ||
+                    item?.href.includes("home_valuation") ||
+                    item?.href.includes("mortgage_calculator") ? (
+                      <a
+                        href={item?.href}
+                        className="flex items-center gap-2 hover:text-secondary transition-colors"
+                      >
+                        <Caret className="text-secondary size-3" />
+                        {item?.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item?.href}
+                        className="flex items-center gap-2 hover:text-secondary transition-colors"
+                      >
+                        <Caret className="text-secondary size-3" />
+                        {item?.label}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>

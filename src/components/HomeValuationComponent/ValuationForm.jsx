@@ -45,12 +45,9 @@ export default function ValuationForm() {
           </div>
 
           {/* ---------------- IDX FORM CONTAINER ---------------- */}
-          <div className="bg-[#FAF9F6] py-10 rounded-2xl border border-gray-100 shadow-sm">
-            <Card className="max-w-2xl mx-auto border-none shadow-none bg-transparent">
+          <div className="bg-[#FAF9F6] md:py-10 rounded-2xl border border-gray-100 shadow-sm">
+            <Card className="max-w-2xl mx-auto border-none shadow-none bg-transparent p-0">
               <CardContent className="p-0">
-                {/* Web4Realty Component 
-                  The script will automatically inject the form into this div.
-                */}
                 <div
                   className="min-h-100 w-full"
                   data-idx-component="IDXComponent"
