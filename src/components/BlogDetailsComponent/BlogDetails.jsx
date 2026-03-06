@@ -78,7 +78,7 @@ const BlogDetails = () => {
   ];
 
   return (
-    <div className="py-20 lg:py-32 bg-white overflow-hidden">
+    <div className="py-12 lg:py-20 bg-white overflow-hidden">
       <Container>
         <div className="flex flex-col">
           {/* Header Section */}
@@ -86,49 +86,49 @@ const BlogDetails = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col items-center mb-12"
+            className="flex flex-col items-center mb-10"
           >
-            <div className="flex items-center gap-2 text-gray-500 text-sm mb-6 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
+            <div className="flex items-center gap-2 text-gray-500 text-sm mb-5 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
               <Calendar className="size-4 text-secondary" />
-              <span className="font-semibold tracking-wide uppercase text-xs">
+              <span className="font-semibold tracking-wide uppercase text-[10px] lg:text-xs">
                 {data?.date}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-semibold font-cormorant text-center max-w-5xl leading-[1.1] text-gray-900 tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-semibold font-cormorant text-center max-w-5xl leading-tight text-gray-900 tracking-tight px-4">
               {data?.title}
             </h1>
           </motion.div>
 
           {/* Featured Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="w-full md:w-[90%] mx-auto mb-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] rounded-3xl overflow-hidden ring-1 ring-black/5"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="w-full lg:w-[95%] mx-auto mb-10 lg:mb-16 shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5"
           >
             <Image
               src={data?.image}
               alt={data?.title}
-              width={1100}
-              height={600}
-              className="w-full h-auto object-cover max-h-150 hover:scale-105 transition-transform duration-1000 ease-in-out"
+              width={1200}
+              height={700}
+              className="w-full h-auto object-cover max-h-160 hover:scale-105 transition-transform duration-1000 ease-in-out"
               unoptimized={true}
             />
           </motion.div>
 
           {/* Content Section */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto w-full px-4 sm:px-0"
+            className="max-w-3xl mx-auto w-full px-6 lg:px-0"
           >
-            <p
+            <div
               dangerouslySetInnerHTML={{ __html: data?.content || "" }}
-              className="text-2xl"
-            ></p>
+              className="text-lg lg:text-xl leading-relaxed text-gray-700 blog-content-wrapper"
+            ></div>
 
             {/* Sharing Section */}
             <motion.div
@@ -136,25 +136,25 @@ const BlogDetails = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="mt-24 pt-12 border-t border-gray-100 flex flex-col items-center justify-center gap-8"
+              className="mt-16 lg:mt-24 pt-10 border-t border-gray-100 flex flex-col items-center justify-center gap-6"
             >
               <div className="flex items-center gap-4">
-                <div className="h-px w-10 bg-gray-200"></div>
-                <span className="text-gray-400 font-bold text-sm capitalize whitespace-nowrap">
+                <div className="h-px w-8 bg-gray-200"></div>
+                <span className="text-gray-400 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap">
                   Share This Article
                 </span>
-                <div className="h-px w-10 bg-gray-200"></div>
+                <div className="h-px w-8 bg-gray-200"></div>
               </div>
-              <div className="flex flex-wrap justify-center gap-5">
+              <div className="flex flex-wrap justify-center gap-4">
                 {socialLinks?.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social?.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -8, scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`size-12 flex items-center justify-center rounded-full text-white shadow-lg hover:shadow-2xl transition-all duration-300 ${social.bg}`}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`size-10 flex items-center justify-center rounded-full text-white shadow-md hover:shadow-lg transition-all duration-300 ${social.bg}`}
                     title={`Share on ${social?.icon.type.name}`}
                   >
                     {social?.icon}

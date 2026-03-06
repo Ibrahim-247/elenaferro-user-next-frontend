@@ -39,12 +39,12 @@ export default function SellerHeader() {
           >
             Start Your Home Selling Journey
           </motion.h4>
-          <motion.p
+          {/* <motion.p
             variants={itemVariants}
             className="text-xl md:text-3xl font-medium font-cormorant"
           >
             Review the information below
-          </motion.p>
+          </motion.p> */}
         </motion.div>
       </Container>
     </div>

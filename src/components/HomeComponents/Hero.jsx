@@ -37,36 +37,36 @@ export default function Hero({ data }) {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-white flex flex-col items-center justify-center h-130 lg:h-175 space-y-3 lg:space-y-5"
+          className="text-white flex flex-col items-center justify-center min-h-130 lg:min-h-175 py-12 lg:py-20 space-y-3"
         >
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-8xl text-center font-semibold font-cormorant uppercase"
+            className="text-4xl sm:text-5xl lg:text-7xl text-center font-semibold font-cormorant uppercase"
           >
             {data?.title || "Title"}
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl lg:text-4xl font-light uppercase"
+            className="text-lg sm:text-xl lg:text-2xl font-light uppercase tracking-widest text-[#F8F7F4]/90"
           >
             {data?.sub_title || "Sub Title"}
           </motion.p>
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-7 mt-5"
+            className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 sm:gap-6 mt-8"
           >
-            <Link href="/search" className="w-full">
-              <Button className="bg-secondary text-white hover:bg-secondary/90 w-full text-lg font-light h-11 rounded-none px-7!">
-                SEARCH HOMES <GoArrowRight className="size-6" />
+            <Link href="/search" className="w-full sm:w-auto">
+              <Button className="bg-secondary text-white hover:bg-secondary/90 w-full text-sm sm:text-base font-medium h-10 sm:h-12 rounded-none px-8!">
+                SEARCH HOMES <GoArrowRight className="ml-2 size-5" />
               </Button>
             </Link>
 
-            <Link href="/contact" className="w-full">
+            <Link href="/contact" className="w-full sm:w-auto">
               <Button
                 variant="outline"
-                className="text-white! hover:bg-secondary w-full bg-transparent text-lg font-light h-11 rounded-none px-7!"
+                className="text-white! border-white hover:bg-white hover:text-black! w-full bg-transparent text-sm sm:text-base font-medium h-10 sm:h-12 rounded-none px-8!"
               >
-                GET IN TOUCH <GoArrowRight className="size-6" />
+                GET IN TOUCH <GoArrowRight className="ml-2 size-5" />
               </Button>
             </Link>
           </motion.div>

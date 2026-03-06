@@ -1,40 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
 import Container from "@/common/Container";
+import { useIdxScript } from "@/hooks/useIdxScript";
 
 export default function MortgageForm() {
-  useEffect(() => {
-    // 1. Set global settings
-    window.idxjsSettings = {
-      token: "31250c8ca6754439eb82780e8c8016a338bf2f9e5697b53134e42ba951d87da4",
-    };
-
-    const scriptUrl = "https://idxjs.web4realty.com/";
-
-    // 2. Clear existing script to avoid conflicts (standard precaution)
-    const existingScript = document.querySelector(`script[src="${scriptUrl}"]`);
-    if (existingScript) existingScript.remove();
-
-    // 3. Append the script
-    const script = document.createElement("script");
-    script.src = scriptUrl;
-    script.async = true;
-    script.type = "text/javascript";
-    document.body.appendChild(script);
-
-    return () => {
-      if (script) script.remove();
-    };
-  }, []);
+  useIdxScript();
 
   return (
-    <div className="mt-26 py-12 lg:py-20">
+    <div className="mt-26 py-10 lg:py-16">
       <Container>
         <div className="w-full space-y-10">
           {/* Header Section */}
           <div className="text-center space-y-4">
-            <h1 className="text-4xl md:text-6xl font-cormorant font-bold text-secondary uppercase">
+            <h1 className="text-4xl md:text-6xl font-cormorant font-bold text-secondary capitalize">
               Mortgage <span className="text-muted-foreground">Calculator</span>
             </h1>
             <p className="text-muted-foreground max-w-xl mx-auto font-montserrat">
@@ -47,6 +25,7 @@ export default function MortgageForm() {
           {/* Web4Realty IDX Component Container */}
           <div className="bg-[#FAF9F6] py-10 rounded-2xl border border-gray-100 shadow-sm">
             <div
+              id="mortgage_calculator"
               className="min-h-125 w-full"
               data-idx-component="IDXComponent"
               data-idx-props={JSON.stringify({

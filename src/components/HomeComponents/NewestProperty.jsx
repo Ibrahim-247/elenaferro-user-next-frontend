@@ -2,39 +2,11 @@
 
 import Container from "@/common/Container";
 import PropertyCard from "@/common/PropertyCard";
-import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useIdxScript } from "@/hooks/useIdxScript";
 
 export default function NewestProperty() {
-  useEffect(() => {
-    // 1. Define settings
-    window.idxjsSettings = {
-      token: "31250c8ca6754439eb82780e8c8016a338bf2f9e5697b53134e42ba951d87da4",
-    };
-
-    const scriptSrc = "https://idxjs.web4realty.com/";
-
-    // 2. Check if script exists; if so, re-run its initialization
-    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
-
-    if (existingScript) {
-      // If script is already there, we tell it to look for new components
-      // Most IDX scripts have a 'render' or 'init' function.
-      // If Web4Realty doesn't auto-watch, we re-append it to trigger execution.
-      existingScript.remove();
-    }
-
-    const script = document.createElement("script");
-    script.src = scriptSrc;
-    script.type = "text/javascript";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup on unmount to prevent memory leaks or duplicate listeners
-      if (script) script.remove();
-    };
-  }, []);
+  useIdxScript();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,7 +28,7 @@ export default function NewestProperty() {
   };
 
   return (
-    <section id="newest-properties" className="bg-[#F8F7F4] py-12 lg:py-20">
+    <section id="newest-properties" className="bg-[#F8F7F4] py-10 lg:py-16">
       <Container>
         <motion.div
           initial="hidden"

@@ -77,7 +77,7 @@ export default function ClientSay() {
   }, [api]);
 
   return (
-    <div className="py-12 lg:py-20 bg-[#F8F7F4]">
+    <div className="py-10 lg:py-16 bg-[#F8F7F4]">
       <Container>
         <motion.div
           initial="hidden"
@@ -88,13 +88,13 @@ export default function ClientSay() {
         >
           <motion.p
             variants={itemVariants}
-            className="text-xl font-normal uppercase text-secondary font-montserrat"
+            className="text-lg font-medium tracking-widest uppercase text-secondary/80 font-montserrat"
           >
             WHAT OUR
           </motion.p>
           <motion.h4
             variants={itemVariants}
-            className="text-4xl lg:text-6xl font-semibold uppercase font-cormorant"
+            className="text-4xl lg:text-5xl xl:text-6xl font-semibold uppercase font-cormorant leading-tight"
           >
             Clients Say
           </motion.h4>
@@ -105,19 +105,24 @@ export default function ClientSay() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={itemVariants}
-          className="mt-14"
+          className="mt-10 lg:mt-16"
         >
           <Carousel setApi={setApi}>
             <CarouselContent>
               {reviewsData?.map((item, index) => (
                 <CarouselItem key={index}>
-                  <div className="border-[#C4BCA9] p-8 lg:p-11 text-center text-lg lg:text-xl font-normal border-2 gap-y-4 lg:gap-y-8 flex flex-col items-center">
-                    <Image src={quots} alt="quots" className="w-10 lg:w-20" />
-                    {item?.review}
-                    <div className="w-24 bg-secondary h-0.5"></div>
-                    <p className="text-2xl font-semibold font-cormorant">
-                      {item?.author}
+                  <div className="border-[#C4BCA9]/30 p-8 lg:p-16 text-center text-lg lg:text-2xl leading-relaxed font-light border-2 gap-y-6 lg:gap-y-10 flex flex-col items-center bg-white shadow-sm rounded-2xl mx-1">
+                    <Image src={quots} alt="quots" className="w-10 lg:w-16 opacity-50" />
+                    <p className="font-cormorant italic text-gray-700">
+                      &quot;{item?.review}&quot;
                     </p>
+                    <div className="w-20 bg-secondary/40 h-px"></div>
+                    <div className="space-y-1">
+                      <p className="text-2xl font-semibold font-cormorant text-secondary">
+                        {item?.author}
+                      </p>
+                      <p className="text-sm font-montserrat text-gray-400 uppercase tracking-widest">{item?.location}</p>
+                    </div>
                   </div>
                 </CarouselItem>
               ))}

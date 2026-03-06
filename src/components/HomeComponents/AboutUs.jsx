@@ -29,27 +29,27 @@ const itemVariants = {
 
 export default function AboutUs({ data }) {
   return (
-    <div className="py-12 lg:py-20">
+    <div className="py-10 lg:py-16">
       <Container>
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="space-y-8"
+          className="space-y-6 lg:space-y-10"
         >
-          <motion.div variants={itemVariants} className="text-center space-y-2">
-            <p className="text-xl font-normal text-secondary font-montserrat">
+          <motion.div variants={itemVariants} className="text-center space-y-3">
+            <p className="text-lg font-medium text-secondary/80 font-montserrat uppercase tracking-wider">
               {data?.sub_title}
             </p>
-            <h3 className="text-4xl lg:text-6xl font-semibold font-cormorant">
+            <h3 className="text-4xl lg:text-5xl xl:text-6xl font-semibold font-cormorant leading-tight">
               {data?.title}
             </h3>
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="space-y-8 my-5 lg:my-8"
+            className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700/90 text-center"
           >
             <p>
               {data?.description ||
