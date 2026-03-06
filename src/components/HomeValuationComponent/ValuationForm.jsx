@@ -34,7 +34,7 @@ export default function ValuationForm() {
         <div className="space-y-16">
           {/* ---------------- HERO ---------------- */}
           <div className="text-center space-y-4">
-            <h1 className="text-3xl md:text-5xl font-serif text-[#1E2A4A] uppercase tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-serif text-[#1E2A4A] capitalize tracking-tight">
               Find Out What <span className="text-[#9A9483]">Your Home</span> is
               Worth
             </h1>

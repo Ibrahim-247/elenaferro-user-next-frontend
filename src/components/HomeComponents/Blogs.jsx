@@ -28,7 +28,7 @@ export default function Blogs({ data }) {
   };
 
   return (
-    <div className="py-12 lg:py-20">
+    <div className="py-10 lg:py-16">
       <Container>
         <motion.div
           initial="hidden"
@@ -39,13 +39,13 @@ export default function Blogs({ data }) {
         >
           <motion.p
             variants={itemVariants}
-            className="text-xl font-normal text-secondary font-montserrat"
+            className="text-lg font-medium text-secondary/80 font-montserrat uppercase tracking-wider"
           >
             READ OUR
           </motion.p>
           <motion.h4
             variants={itemVariants}
-            className="text-4xl lg:text-6xl font-semibold font-cormorant"
+            className="text-4xl lg:text-5xl xl:text-6xl font-semibold font-cormorant leading-tight"
           >
             BLOGS
           </motion.h4>
@@ -56,7 +56,7 @@ export default function Blogs({ data }) {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 lg:my-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 lg:my-16"
         >
           {data?.map((blog, index) => (
             <motion.div key={index} variants={itemVariants}>

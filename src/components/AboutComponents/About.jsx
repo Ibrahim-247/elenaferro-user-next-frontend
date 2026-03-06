@@ -36,7 +36,7 @@ export default function About({ data }) {
   };
 
   return (
-    <div className="bg-[#F8F7F4] py-12 md:py-20 overflow-hidden">
+    <div className="bg-[#F8F7F4] py-10 lg:py-16 overflow-hidden">
       <Container>
         <motion.div
           initial="hidden"
@@ -56,7 +56,7 @@ export default function About({ data }) {
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl font-semibold font-cormorant mt-3 leading-tight"
             >
-              {data?.title || "MEDILOCK REALTY"}
+              {data?.title || "MEDLOCK REALTY"}
             </motion.h4>
 
             <motion.p
@@ -67,7 +67,7 @@ export default function About({ data }) {
             </motion.p>
             <motion.div variants={itemVariants}>
               <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 w-full sm:w-auto">
-                SCHDULE CONSULTATION <MoveRight />
+                SCHEDULE CONSULTATION <MoveRight />
               </Button>
             </motion.div>
           </div>

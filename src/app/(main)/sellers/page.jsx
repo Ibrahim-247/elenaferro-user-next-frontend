@@ -20,7 +20,7 @@ export default async function page() {
       <CommonBanner
         title={bannerData?.data?.title}
         subtitle={bannerData?.data?.sub_title}
-        banner_img={bannerData?.image}
+        banner_img={bannerData?.data?.image}
       />
       <SellerHeader />
       <SellingProcess data={sellingProcess?.data} />

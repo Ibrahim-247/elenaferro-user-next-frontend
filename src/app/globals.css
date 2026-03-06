@@ -97,3 +97,8 @@
     scroll-behavior: smooth;
   }
 }
+
+#mortgage_calculator .idx-mortgage-calculator .idx-mortgage-calculator__header {
+  display: none !important;
+  opacity: 0 !important;
+}

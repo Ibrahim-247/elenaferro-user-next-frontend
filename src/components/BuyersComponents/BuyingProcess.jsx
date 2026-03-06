@@ -36,7 +36,7 @@ export default function BuyingProcess({ data }) {
   };
 
   return (
-    <div className="py-12 md:py-20 overflow-hidden">
+    <div className="py-10 md:py-16 overflow-hidden">
       <Container>
         <motion.div
           initial="hidden"

@@ -28,7 +28,7 @@ export default function Consultation({ data }) {
   };
 
   return (
-    <div className="py-12 md:py-20">
+    <div className="py-10 lg:py-16">
       <Container>
         <motion.div
           initial="hidden"
@@ -50,7 +50,7 @@ export default function Consultation({ data }) {
           ></motion.p>
           <motion.div variants={itemVariants}>
             <Button className="rounded-none bg-secondary text-white hover:bg-secondary/90 h-11 px-8 w-full sm:w-auto">
-              SCHDULE CONSULTATION <MoveRight className="size-5 md:size-6" />
+              SCHEDULE CONSULTATION <MoveRight className="size-5 md:size-6" />
             </Button>
           </motion.div>
         </motion.div>
