@@ -24,7 +24,7 @@ export default function Different({ data }) {
   };
 
   return (
-    <div className="py-12 md:py-20">
+    <div className="py-10 lg:py-16">
       <Container>
         <motion.div
           initial="hidden"
