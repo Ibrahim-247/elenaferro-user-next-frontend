@@ -161,7 +161,7 @@ export async function getHomeSellerBanner() {
 // selling process section
 export async function getSellingProcess() {
   return useServerApi({
-    mode: "SSR",
+    mode: "ISR",
     revalidate: 60,
     endpoint: "/cms/seller_page/selling_process_section",
   });
