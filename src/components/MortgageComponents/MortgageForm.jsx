@@ -11,7 +11,7 @@ export default function MortgageForm() {
       <Container>
         <div className="w-full space-y-10">
           {/* Header Section */}
-          <div className="text-center space-y-4">
+          {/* <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-6xl font-cormorant font-bold text-secondary capitalize">
               Mortgage <span className="text-muted-foreground">Calculator</span>
             </h1>
@@ -20,10 +20,10 @@ export default function MortgageForm() {
               to estimate your monthly payments and see how different terms
               affect your budget.
             </p>
-          </div>
+          </div> */}
 
           {/* Web4Realty IDX Component Container */}
-          <div className="bg-[#FAF9F6] py-10 rounded-2xl border border-gray-100 shadow-sm">
+          <div className="bg-[#FAF9F6] py-10 rounded-2xl border border-gray-100 shadow-sm w-full">
             <div
               id="mortgage_calculator"
               className="min-h-125 w-full"

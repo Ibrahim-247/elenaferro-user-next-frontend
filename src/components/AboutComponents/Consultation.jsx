@@ -39,13 +39,13 @@ export default function Consultation({ data }) {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl font-semibold text-secondary max-w-full lg:max-w-110 whitespace-normal w-full leading-tight"
+            className="text-2xl md:text-3xl font-cormorant font-semibold text-secondary max-w-full lg:max-w-110 whitespace-normal w-full leading-tight"
           >
             {data?.title}
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="max-w-full lg:max-w-200 text-lg md:text-xl font-normal text-[#404A60] leading-relaxed"
+            className="max-w-full lg:max-w-200 text-lg font-normal text-[#404A60] leading-relaxed"
             dangerouslySetInnerHTML={{ __html: data?.description || "" }}
           ></motion.p>
           <motion.div variants={itemVariants}>

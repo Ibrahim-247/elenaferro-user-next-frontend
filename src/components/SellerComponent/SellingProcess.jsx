@@ -57,12 +57,16 @@ export default function SellingProcess({ data }) {
               {data?.sub_title || "Step to Selling "}
             </p>
 
-            <p className="text-base md:text-xl font-normal my-6 md:my-12 leading-relaxed text-[#404A60]">
-              {data?.description}
-            </p>
-            <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 px-6! w-full sm:w-auto">
-              SEARCH FOR A HOME <MoveRight className="size-5 md:size-6" />
-            </Button>
+            <p
+              dangerouslySetInnerHTML={{ __html: data?.description }}
+              className="text-base md:text-xl font-normal my-6 md:my-12 leading-relaxed text-[#404A60]"
+            />
+
+            <a href="/sellers/home_valuation">
+              <Button className="bg-secondary text-white uppercase rounded-none hover:bg-secondary/90 h-11 px-6! w-full sm:w-auto">
+                home valuation <MoveRight className="size-5 md:size-6" />
+              </Button>
+            </a>
           </motion.div>
           <motion.div
             variants={imageVariants}
