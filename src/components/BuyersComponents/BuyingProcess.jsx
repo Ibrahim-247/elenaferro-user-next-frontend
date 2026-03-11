@@ -59,9 +59,11 @@ export default function BuyingProcess({ data }) {
               className="text-base md:text-xl font-normal my-6 md:my-12 leading-relaxed text-[#404A60]"
               dangerouslySetInnerHTML={{ __html: data?.description || "" }}
             ></p>
-            <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 px-6! w-full sm:w-auto">
-              SEARCH FOR A HOME <MoveRight className="size-5 md:size-6" />
-            </Button>
+            <a href="/search">
+              <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 px-6! w-full sm:w-auto">
+                SEARCH FOR A HOME <MoveRight className="size-5 md:size-6" />
+              </Button>
+            </a>
           </motion.div>
           <motion.div
             variants={imageVariants}
