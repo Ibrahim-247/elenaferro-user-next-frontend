@@ -3,23 +3,26 @@
 import SearchHeader from "./SearchHeader";
 import { useEffect } from "react";
 import Container from "@/common/Container";
+import { useSearchParams } from "next/navigation";
 
 export default function SearchResult() {
+  const searchParams = useSearchParams();
+
+  const rawArea = searchParams.get("area");
+  const area = rawArea ? decodeURIComponent(rawArea) : "";
+
   useEffect(() => {
-    // 1. Set the global settings
     window.idxjsSettings = {
       token: "31250c8ca6754439eb82780e8c8016a338bf2f9e5697b53134e42ba951d87da4",
     };
 
     const scriptUrl = "https://idxjs.web4realty.com/";
 
-    // 2. Remove existing script to force a fresh re-initialization
     const existingScript = document.querySelector(`script[src="${scriptUrl}"]`);
     if (existingScript) {
       existingScript.remove();
     }
 
-    // 3. Create and append the script manually
     const script = document.createElement("script");
     script.src = scriptUrl;
     script.async = true;
@@ -27,10 +30,9 @@ export default function SearchResult() {
     document.body.appendChild(script);
 
     return () => {
-      // Optional: Cleanup when leaving the page
       if (script) script.remove();
     };
-  }, []);
+  }, [area]);
 
   return (
     <div className="py-10 md:py-20 mt-16 md:mt-20 space-y-6 md:space-y-10">
@@ -45,6 +47,7 @@ export default function SearchResult() {
             data-idx-props={JSON.stringify({
               sid: "idxcmp_057rTADtdDedDEk9aDdGID",
               type: "preset_search",
+              area: area,
             })}
           />
         </div>

@@ -1,12 +1,23 @@
 "use client";
+import { useState, useEffect } from "react";
 import Container from "@/common/Container";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import aboutImg from "../../assets/about.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { PopupModal } from "react-calendly";
 
 export default function About({ data }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [rootElement, setRootElement] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setRootElement(document.body);
+    }
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -66,9 +77,20 @@ export default function About({ data }) {
               {data?.description}
             </motion.p>
             <motion.div variants={itemVariants}>
-              <Button className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 w-full sm:w-auto">
+              <Button
+                onClick={() => setIsOpen(true)}
+                className="bg-secondary text-white rounded-none hover:bg-secondary/90 h-11 w-full sm:w-auto"
+              >
                 SCHEDULE CONSULTATION <MoveRight />
               </Button>
+              {rootElement && (
+                <PopupModal
+                  url="https://calendly.com/dev-rodro/30min"
+                  onModalClose={() => setIsOpen(false)}
+                  open={isOpen}
+                  rootElement={rootElement}
+                />
+              )}
             </motion.div>
           </div>
           <motion.div
