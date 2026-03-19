@@ -4,6 +4,9 @@ import Image from "next/image";
 import sellImg from "../../assets/sell.png";
 import Container from "@/common/Container";
 import { motion } from "framer-motion";
+import deepcleanImg from "../../assets/photo_2026-03-18_21-55-27.jpg";
+import landscapingImg from "../../assets/photo_2026-03-18_21-55-27 (2).jpg";
+import repairImg from "../../assets/photo_2026-03-18_21-55-27 (3).jpg";
 
 export default function PresellService() {
   const leftSideVariants = {
@@ -22,7 +25,7 @@ export default function PresellService() {
         <Container>
           <div className="space-y-24">
             {/* Title */}
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -33,18 +36,18 @@ export default function PresellService() {
             </motion.h2>
 
             {/* Block 1 */}
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             >
-              <motion.div 
+              <motion.div
                 variants={leftSideVariants}
-                className="max-w-[500px] w-full h-[300px] overflow-hidden rounded-xl mx-auto lg:mx-0"
+                className="max-w-125 w-full h-75  overflow-hidden rounded-xl mx-auto lg:mx-0"
               >
                 <Image
-                  src={sellImg}
+                  src={deepcleanImg}
                   alt="Deep Cleaning"
                   className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                 />
@@ -70,13 +73,16 @@ export default function PresellService() {
             </motion.div>
 
             {/* Block 2 */}
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             >
-              <motion.div variants={leftSideVariants} className="space-y-4 order-2 lg:order-1">
+              <motion.div
+                variants={leftSideVariants}
+                className="space-y-4 order-2 lg:order-1"
+              >
                 <h3 className="text-2xl font-semibold text-[#B7A47C]">
                   Landscaping & Curb Appeal
                 </h3>
@@ -93,12 +99,12 @@ export default function PresellService() {
                 </p>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 variants={rightSideVariants}
-                className="max-w-[500px] w-full h-[300px] overflow-hidden rounded-xl order-1 lg:order-2 mx-auto lg:mx-0"
+                className="max-w-125 w-full h-75  overflow-hidden rounded-xl order-1 lg:order-2 mx-auto lg:mx-0"
               >
                 <Image
-                  src={sellImg}
+                  src={landscapingImg}
                   alt="Landscaping"
                   className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                 />
@@ -106,18 +112,18 @@ export default function PresellService() {
             </motion.div>
 
             {/* Block 3 */}
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             >
-              <motion.div 
+              <motion.div
                 variants={leftSideVariants}
-                className="max-w-[500px] w-full h-[300px] overflow-hidden rounded-xl mx-auto lg:mx-0"
+                className="max-w-125 w-full h-75 overflow-hidden rounded-xl mx-auto lg:mx-0"
               >
                 <Image
-                  src={sellImg}
+                  src={repairImg}
                   alt="Repair and Maintenance"
                   className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                 />
