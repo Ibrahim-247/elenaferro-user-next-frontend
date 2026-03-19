@@ -40,7 +40,6 @@ export default function SearchResult() {
 
       <Container>
         <div className="space-y-10">
-          {/* New Preset Search Results Component */}
           <div
             className="w-full min-h-150"
             data-idx-component="IDXComponent"
