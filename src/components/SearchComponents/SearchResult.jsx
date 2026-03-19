@@ -37,7 +37,6 @@ export default function SearchResult() {
   return (
     <div className="py-10 md:py-20 mt-16 md:mt-20 space-y-6 md:space-y-10">
       <SearchHeader />
-
       <Container>
         <div className="space-y-10">
           <div
