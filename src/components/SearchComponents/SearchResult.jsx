@@ -10,7 +10,6 @@ export default function SearchResult() {
 
   const rawArea = searchParams.get("area");
   const area = rawArea ? decodeURIComponent(rawArea) : "";
-  console.log(area);
 
   useEffect(() => {
     window.idxjsSettings = {
