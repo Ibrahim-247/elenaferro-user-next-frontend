@@ -56,10 +56,10 @@ export default function Features({ data }) {
           className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 lg:mt-16"
         >
           {data?.featured_area?.map((item, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={`/search?area=${encodeURIComponent(item?.title || "default")}`}
               variants={itemVariants}
-              whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
               className="w-full h-80 lg:h-96 overflow-hidden relative cursor-pointer group rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
             >
@@ -74,6 +74,7 @@ export default function Features({ data }) {
                   width={600}
                   height={400}
                   unoptimized={true}
+                  loading="eager"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -81,7 +82,7 @@ export default function Features({ data }) {
               <h5 className="text-2xl lg:text-3xl font-semibold uppercase absolute top-1/2 left-1/2 -translate-1/2 text-white pointer-events-none drop-shadow-2xl font-cormorant tracking-widest text-center w-full px-4">
                 {item?.title}
               </h5>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
       </Container>
