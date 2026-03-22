@@ -55,11 +55,11 @@ export default function Hero({ data }) {
             variants={itemVariants}
             className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 sm:gap-6 mt-8"
           >
-            <Link href="/search" className="w-full sm:w-auto">
+            <a href="/search" className="w-full sm:w-auto">
               <Button className="bg-secondary text-white hover:bg-secondary/90 w-full text-sm sm:text-base font-medium h-10 sm:h-12 rounded-none px-8!">
                 SEARCH HOMES <GoArrowRight className="ml-2 size-5" />
               </Button>
-            </Link>
+            </a>
 
             <Link href="/contact" className="w-full sm:w-auto">
               <Button
